@@ -25,7 +25,7 @@
             </p:button>
         </div>
         <p:spacer height="20" />
-        <p:dataTable id="usersTable" value="#{jsfTaskListController.getTasks()}" var="task"  style="width:1200px;">
+        <p:dataTable id="taskTable" value="#{jsfTaskListController.getTasks()}" var="task"  style="width:1200px;">
             <p:column headerText="NAME">
                 <p:outputLabel value="#{task.name}"/>
             </p:column>
@@ -55,7 +55,7 @@
                 </p:link>
             </p:column>
             <p:column width="30">
-                <p:commandLink update="usersTable"
+                <p:commandLink update="taskTable"
                                actionListener="#{jsfTaskListController.removeById(project.id)}">
                     <i class="fa fa-trash" style="font-size: 1.5em; margin: 5px;" />
                 </p:commandLink>
