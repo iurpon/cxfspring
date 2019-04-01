@@ -28,10 +28,22 @@
         </property>
     </bean>
 
+    <bean id="projectEndPointImpl" class="ru.trandefil.spring.endpoint.ProjectEndPointImpl">
+        <property name="userService">
+            <ref bean="userServiceImpl"/>
+        </property>
+        <property name="projectService">
+            <ref bean="projectServiceImpl"/>
+        </property>
+    </bean>
+
     <jaxws:endpoint id="productService" implementor="#productServiceImpl"
                     address="/productService"/>
 
     <jaxws:endpoint id="userEndPoint" implementor="#userEndPointImpl"
                     address="/userEndPoint"/>
+
+    <jaxws:endpoint id="projectEndPoint" implementor="#projectEndPointImpl"
+                    address="/projectEndPoint"/>
 
 </beans>

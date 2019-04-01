@@ -17,17 +17,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-//@WebService(endpointInterface = "ru.trandefil.spring.generated.ProjectEndPoint")
-public class ProjectEndPointImpl{//} implements ProjectEndPoint {
+@WebService(endpointInterface = "ru.trandefil.spring.generated.ProjectEndPoint")
+public class ProjectEndPointImpl implements ProjectEndPoint {
 
-/*
     private final Logger logger = Logger.getLogger(this.getClass().getName());
 
-    @Autowired
+
     private ProjectService projectService;
 
-    @Autowired
+
     private UserService userService;
+
+    @Autowired
+    public void setProjectService(ProjectService projectService) {
+        this.projectService = projectService;
+    }
+
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 
     @Override
     public ProjectDTO saveProject(String name, String description, Session session) {
@@ -35,7 +44,7 @@ public class ProjectEndPointImpl{//} implements ProjectEndPoint {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        final Project saved = projectService.save(name, description);
+        final Project saved = projectService.saveNew(name, description,session);
 //        final Project saved = projectService.save(session.getUserId(), name, description);
         return getDTOproject(saved);
     }
@@ -58,7 +67,8 @@ public class ProjectEndPointImpl{//} implements ProjectEndPoint {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        final List<Project> projectList = projectService.getAll(session.getUserId());
+//        final List<Project> projectList = projectService.getAll(session.getUserId());
+        final List<Project> projectList = projectService.getAll();
         return getDTOProjectList(projectList);
     }
 
@@ -68,7 +78,8 @@ public class ProjectEndPointImpl{//} implements ProjectEndPoint {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        Project project = projectService.getById(id, session.getUserId());
+//        Project project = projectService.getById(id, session.getUserId());
+        Project project = projectService.getById(id);
         return getDTOproject(project);
     }
 
@@ -79,7 +90,8 @@ public class ProjectEndPointImpl{//} implements ProjectEndPoint {
             throw new SecurityAuthentificationException("security authentification exception.");
         }
         final Project project = fromDTO(projectDTO);
-        projectService.delete(session.getUserId(), project);
+//        projectService.delete(session.getUserId(), project);
+        projectService.delete(project);
     }
 
     @Override
@@ -88,7 +100,8 @@ public class ProjectEndPointImpl{//} implements ProjectEndPoint {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        projectService.deleteByName(session.getUserId(), projectName);
+//        projectService.deleteByName(session.getUserId(), projectName);
+        projectService.deleteByName(projectName);
     }
 
     @Override
@@ -97,7 +110,8 @@ public class ProjectEndPointImpl{//} implements ProjectEndPoint {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        Project project = projectService.getByName(projectName, session.getUserId());
+//        Project project = projectService.getByName(projectName, session.getUserId());
+        Project project = projectService.getByName(projectName);
         if (project == null) {
             return null;
         }
@@ -120,6 +134,5 @@ public class ProjectEndPointImpl{//} implements ProjectEndPoint {
         final Project project = new Project(dto.getId(), dto.getName(), dto.getDescription(), user);
         return project;
     }
-*/
 
 }

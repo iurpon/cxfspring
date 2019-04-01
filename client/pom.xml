@@ -71,6 +71,7 @@
                                     </extraargs>>-->
                                     <wsdl>http://localhost:8080/server/services/productService?wsdl</wsdl>
                                     <wsdl>http://localhost:8080/server/services/userEndPoint?wsdl</wsdl>
+                                    <wsdl>http://localhost:8080/server/services/projectEndPoint?wsdl</wsdl>
 
                                 </wsdlOption>
                             </wsdlOptions>

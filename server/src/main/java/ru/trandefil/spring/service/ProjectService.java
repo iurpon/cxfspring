@@ -1,6 +1,7 @@
 package ru.trandefil.spring.service;
 
 import ru.trandefil.spring.model.Project;
+import ru.trandefil.spring.model.Session;
 
 import java.util.List;
 
@@ -18,4 +19,9 @@ public interface ProjectService {
 
     Project getByName(String name);
 
+    Project saveNew(String name, String description, Session session);
+
+    Project update(Project fromDTO);
+
+    void deleteByName(String projectName);
 }

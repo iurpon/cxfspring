@@ -5,7 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.trandefil.spring.model.Project;
+import ru.trandefil.spring.model.Session;
+import ru.trandefil.spring.model.User;
 import ru.trandefil.spring.repository.ProjectRepository;
+import ru.trandefil.spring.repository.UserRepository;
 import ru.trandefil.spring.util.UUIDUtil;
 
 import java.util.List;
@@ -19,6 +22,9 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
     private ProjectRepository projectRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     @Transactional
@@ -59,6 +65,24 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public Project getByName(@NonNull final String name) {
         return projectRepository.getByName(name);
+    }
+
+    @Override
+    public Project saveNew(String name, String description, Session session) {
+        final User user = userRepository.findById(session.getUserId()).orElse(null);
+        final Project project = new Project(UUIDUtil.getUniqueString(),name,description,user);
+        return projectRepository.save(project);
+    }
+
+    @Override
+    public Project update(Project fromDTO) {
+        return projectRepository.save(fromDTO);
+    }
+
+    @Override
+    public void deleteByName(String projectName) {
+        Project byName = projectRepository.getByName(projectName);
+        projectRepository.delete(byName);
     }
 
 }
