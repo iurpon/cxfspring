@@ -10,7 +10,7 @@ import ru.trandefil.spring.model.Product;
 import ru.trandefil.spring.service.ProductService;
 
 //mention endpoint interface and serviceName
-@WebService(endpointInterface = "ProductService", serviceName = "productService")
+@WebService(endpointInterface = "ru.trandefil.spring.service.ProductService", serviceName = "productService")
 public class ProductServiceImpl implements ProductService {
 
     private ProductServiceMockDaoImpl productServiceMockImpl;

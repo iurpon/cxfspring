@@ -10,7 +10,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the com.spring.service package.
+ * generated in the ru.trandefil.spring.service package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -24,14 +24,14 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Product_QNAME = new QName("http://service.spring.com/", "Product");
-    private final static QName _GetAllProducts_QNAME = new QName("http://service.spring.com/", "getAllProducts");
-    private final static QName _GetAllProductsResponse_QNAME = new QName("http://service.spring.com/", "getAllProductsResponse");
-    private final static QName _GetProduct_QNAME = new QName("http://service.spring.com/", "getProduct");
-    private final static QName _GetProductResponse_QNAME = new QName("http://service.spring.com/", "getProductResponse");
+    private final static QName _Product_QNAME = new QName("http://service.spring.trandefil.ru/", "Product");
+    private final static QName _GetAllProducts_QNAME = new QName("http://service.spring.trandefil.ru/", "getAllProducts");
+    private final static QName _GetAllProductsResponse_QNAME = new QName("http://service.spring.trandefil.ru/", "getAllProductsResponse");
+    private final static QName _GetProduct_QNAME = new QName("http://service.spring.trandefil.ru/", "getProduct");
+    private final static QName _GetProductResponse_QNAME = new QName("http://service.spring.trandefil.ru/", "getProductResponse");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.spring.service
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: ru.trandefil.spring.service
      * 
      */
     public ObjectFactory() {
@@ -81,7 +81,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Product }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://service.spring.com/", name = "Product")
+    @XmlElementDecl(namespace = "http://service.spring.trandefil.ru/", name = "Product")
     public JAXBElement<Product> createProduct(Product value) {
         return new JAXBElement<Product>(_Product_QNAME, Product.class, null, value);
     }
@@ -90,7 +90,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link GetAllProducts }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://service.spring.com/", name = "getAllProducts")
+    @XmlElementDecl(namespace = "http://service.spring.trandefil.ru/", name = "getAllProducts")
     public JAXBElement<GetAllProducts> createGetAllProducts(GetAllProducts value) {
         return new JAXBElement<GetAllProducts>(_GetAllProducts_QNAME, GetAllProducts.class, null, value);
     }
@@ -99,7 +99,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link GetAllProductsResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://service.spring.com/", name = "getAllProductsResponse")
+    @XmlElementDecl(namespace = "http://service.spring.trandefil.ru/", name = "getAllProductsResponse")
     public JAXBElement<GetAllProductsResponse> createGetAllProductsResponse(GetAllProductsResponse value) {
         return new JAXBElement<GetAllProductsResponse>(_GetAllProductsResponse_QNAME, GetAllProductsResponse.class, null, value);
     }
@@ -108,7 +108,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link GetProduct }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://service.spring.com/", name = "getProduct")
+    @XmlElementDecl(namespace = "http://service.spring.trandefil.ru/", name = "getProduct")
     public JAXBElement<GetProduct> createGetProduct(GetProduct value) {
         return new JAXBElement<GetProduct>(_GetProduct_QNAME, GetProduct.class, null, value);
     }
@@ -117,7 +117,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link GetProductResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://service.spring.com/", name = "getProductResponse")
+    @XmlElementDecl(namespace = "http://service.spring.trandefil.ru/", name = "getProductResponse")
     public JAXBElement<GetProductResponse> createGetProductResponse(GetProductResponse value) {
         return new JAXBElement<GetProductResponse>(_GetProductResponse_QNAME, GetProductResponse.class, null, value);
     }

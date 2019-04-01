@@ -88,7 +88,7 @@
                         <phase>process-classes</phase>
                         <configuration>
                             <!-- service endpoint interface or class -->
-                            <className>ru.ProductService</className>
+                            <className>ru.trandefil.spring.service.ProductService</className>
                             <!-- location where wsdl file will be generated -->
                             <outputFile>${project.basedir}/src/main/resources/wsdl/ProductService.wsdl</outputFile>
                             <genWsdl>true</genWsdl>
