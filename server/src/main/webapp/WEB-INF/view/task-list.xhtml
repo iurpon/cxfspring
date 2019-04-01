@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+<h:body>
+    <h:form>
+        <div>
+            <p:button outcome="index" value="Home" icon="pi pi-star" style="margin-right:20px;">
+            </p:button>
+
+            <p:button outcome="task-edit" value="Save new Task" icon="pi pi-star" style="margin-right:20px;">
+            </p:button>
+
+            <p:button outcome="user-list" value="User List" icon="pi pi-star" style="margin-right:20px;">
+            </p:button>
+
+            <p:button outcome="project-list" value="Project List" icon="pi pi-star" style="margin-right:20px;">
+            </p:button>
+        </div>
+        <p:spacer height="20" />
+        <p:dataTable id="usersTable" value="#{jsfTaskListController.getTasks()}" var="task"  style="width:1200px;">
+            <p:column headerText="NAME">
+                <p:outputLabel value="#{task.name}"/>
+            </p:column>
+            <p:column headerText="DESCRIPTION">
+                <p:outputLabel value="#{task.description}"/>
+            </p:column>
+            <p:column headerText="CREATOR">
+                <p:outputLabel value="#{task.assignee.name}"/>
+            </p:column>
+            <p:column headerText="Executor">
+                <p:outputLabel value="#{task.executor.name}"/>
+            </p:column>
+            <p:column headerText="Start Date">
+                <p:outputLabel value="#{task.start}">
+                    <f:convertDateTime pattern="dd-MM-yyyy" />
+                </p:outputLabel>
+            </p:column>
+            <p:column headerText="End Date">
+                <p:outputLabel value="#{task.end}">
+                    <f:convertDateTime pattern="dd-MM-yyyy" />
+                </p:outputLabel>
+            </p:column>
+            <p:column width="30">
+                <p:link outcome="task-edit">
+                    <i class="fa fa-edit" style="font-size: 1.5em; margin: 5px;" />
+                    <f:param name="id" value="#{task.id}" />
+                </p:link>
+            </p:column>
+            <p:column width="30">
+                <p:commandLink update="usersTable"
+                               actionListener="#{jsfTaskListController.removeById(project.id)}">
+                    <i class="fa fa-trash" style="font-size: 1.5em; margin: 5px;" />
+                </p:commandLink>
+            </p:column>
+        </p:dataTable>
+
+    </h:form>
+
+</h:body>
+</html>

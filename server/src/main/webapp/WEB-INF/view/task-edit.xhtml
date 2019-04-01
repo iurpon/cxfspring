@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:metadata>
+    <f:viewParam name="id" value="#{jsfTaskEditController.id}"/>
+    <f:viewAction action="#{jsfTaskEditController.init}"/>
+</f:metadata>
+<h:head>
+    <style type="text/css">
+    .label {
+        width:20%;
+        padding:4px;
+    }
+
+    .value {
+        width:80%;
+        padding:4px;
+    }
+
+    .grid {
+        width:100%;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .outputLabel {
+        font-weight: bold;
+    }
+
+    .grid {
+        width:33%;
+        padding:4px;
+    }
+
+    </style>
+</h:head>
+<h:body>
+    <h:form>
+
+        <p:tab id="personal" title="Personal" >
+            <p:panel header="Edit Task ">
+
+                    <p:outputPanel>
+                        <h:outputText value="Project: *"/>
+                    </p:outputPanel>
+                    <p:outputPanel>
+                        <p:selectOneMenu value="#{jsfTaskEditController.projectId}" label = "project">
+                            <f:selectItem itemLabel="" itemValue="#{null}" label = "project"/>
+                            <f:selectItems value="#{jsfTaskEditController.projects}" var="project"
+                                           itemValue="#{project.id}" itemLabel="#{project.name}" label = "project"/>
+                        </p:selectOneMenu>
+                    </p:outputPanel>
+                    <p:spacer height="20"/>
+                    <p:outputPanel>
+                        <h:outputText value="Executor: *    "/>
+                    </p:outputPanel>
+                    <p:outputPanel>
+                        <p:selectOneMenu value="#{jsfTaskEditController.executorId}" label = "project">
+                            <f:selectItem itemLabel="" itemValue="#{null}" label = "executor"/>
+                            <f:selectItems value="#{jsfTaskEditController.users}" var="user"
+                                           itemValue="#{user.id}" itemLabel="#{user.name}" label = "executor"/>
+                        </p:selectOneMenu>
+                    </p:outputPanel>
+                    <p:spacer height="20"/>
+                    <p:outputPanel>
+                        <h:outputText value="Task Name: *    "/>
+                    </p:outputPanel>
+                    <p:outputPanel>
+                        <p:inputText value="#{jsfTaskEditController.task.name}" required="true" label="name"/>
+                    </p:outputPanel>
+                    <p:spacer height="20"/>
+                    <p:outputPanel>
+                        <h:outputText value="Task Description: *    "/>
+                    </p:outputPanel>
+                    <p:outputPanel>
+                        <p:inputText value="#{jsfTaskEditController.task.description}" required="true" label="description"/>
+                    </p:outputPanel>
+                    <p:spacer height="20"/>
+                    <p:outputPanel>
+                        <h:outputText value="Task Start: *    "/>
+                    </p:outputPanel>
+                    <p:outputPanel>
+                        <p:calendar value="#{jsfTaskEditController.task.start}" required="true" label="start"/>
+                    </p:outputPanel>
+                    <p:spacer height="20"/>
+                    <p:outputPanel>
+                        <h:outputText value="Task End: *    "/>
+                    </p:outputPanel>
+                    <p:outputPanel>
+                        <p:calendar value="#{jsfTaskEditController.task.end}" required="true" label="end"/>
+                    </p:outputPanel>
+                    <p:spacer height="20"/>
+                    <p:outputPanel>
+                        <p:commandButton value="SAVE" action="#{jsfTaskEditController.save}"/>
+                        <p:spacer width="20"/>
+                        <p:button value="Task List" outcome="task-list">
+                        </p:button>
+                    </p:outputPanel>
+
+
+            </p:panel>
+        </p:tab>
+
+    </h:form>
+</h:body>
+</html>

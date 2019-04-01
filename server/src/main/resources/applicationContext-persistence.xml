@@ -45,10 +45,7 @@
         </property>
         <!-- Set base package of your entities -->
         <property name="packagesToScan" value="ru.trandefil.spring.model"/>
-        <!-- Set share cache mode -->
-<!--        <property name="sharedCacheMode" value="ENABLE_SELECTIVE"/>
-        &lt;!&ndash; Set validation mode &ndash;&gt;
-        <property name="validationMode" value="NONE"/>-->
+
     </bean>
 
     <!-- Configure the transaction manager bean -->
