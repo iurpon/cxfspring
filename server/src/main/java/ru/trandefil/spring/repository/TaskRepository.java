@@ -3,6 +3,7 @@ package ru.trandefil.spring.repository;
 import lombok.NonNull;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import ru.trandefil.spring.model.Task;
 
 import java.util.List;
@@ -28,8 +29,10 @@ public interface TaskRepository extends JpaRepository<Task,String> {
     @Override
     void delete(@NonNull final Task task);
 
-    @Query("delete from t Task where t.name = :name")
-    boolean deleteByName(@NonNull final String name);
+/*    @Query("delete from Task t where t.name = :name")
+    void deleteByName(@NonNull final String name);*/
+
+    void deleteByName(@Param("name") String name);
 
     @Query("select t from Task t where t.name = :name")
     Task getByName(@NonNull final String name);

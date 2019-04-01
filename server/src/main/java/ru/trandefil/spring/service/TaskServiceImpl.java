@@ -59,7 +59,8 @@ public class TaskServiceImpl implements TaskService {
     @Override
     @Transactional
     public boolean deleteByName(@NonNull final String name) {
-        return taskRepository.deleteByName(name);
+        taskRepository.deleteByName(name);
+        return false;
     }
 
     @Override
