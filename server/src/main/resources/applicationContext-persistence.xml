@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/data/jpa
+    http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+    <!-- Configure the data source bean -->
+    <context:property-placeholder location="db.properties" />
+
+    <bean id = "dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <context:component-scan base-package="ru.trandefil.spring.repository"/>
+
+    <!-- Create default configuration for Hibernate -->
+    <bean id="hibernateJpaVendorAdapter"
+          class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+
+    <!-- Configure the entity manager factory bean -->
+    <bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
+        <!-- Set JPA properties -->
+        <property name="jpaProperties">
+            <map>
+                <entry key="#{T(org.hibernate.cfg.AvailableSettings).DIALECT}" value="${hibernate.dialect}"/>
+                <entry key="#{T(org.hibernate.cfg.AvailableSettings).FORMAT_SQL}" value="${hibernate.format_sql}"/>
+                <entry key="#{T(org.hibernate.cfg.AvailableSettings).SHOW_SQL}" value="${hibernate.show_sql}"/>
+                <entry key="#{T(org.hibernate.cfg.AvailableSettings).HBM2DDL_AUTO}" value="${hibernate.hbm2ddl.auto}"/>
+            </map>
+        </property>
+        <!-- Set base package of your entities -->
+        <property name="packagesToScan" value="ru.trandefil.spring.model"/>
+        <!-- Set share cache mode -->
+<!--        <property name="sharedCacheMode" value="ENABLE_SELECTIVE"/>
+        &lt;!&ndash; Set validation mode &ndash;&gt;
+        <property name="validationMode" value="NONE"/>-->
+    </bean>
+
+    <!-- Configure the transaction manager bean -->
+    <bean id="transactionManager"
+          class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <!-- Enable annotation driven transaction management -->
+    <tx:annotation-driven/>
+
+    <!--
+      Configure Spring Data JPA and set the base package of the
+      repository interfaces
+    -->
+    <jpa:repositories base-package="ru.trandefil.spring.repository"/>
+</beans>
