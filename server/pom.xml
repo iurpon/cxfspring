@@ -88,13 +88,14 @@
                         <phase>process-classes</phase>
                         <configuration>
                             <!-- service endpoint interface or class -->
-                            <className>ru.trandefil.spring.service.ProductService</className>
+                            <className>ru.ProductService</className>
                             <!-- location where wsdl file will be generated -->
                             <outputFile>${project.basedir}/src/main/resources/wsdl/ProductService.wsdl</outputFile>
                             <genWsdl>true</genWsdl>
                             <verbose>true</verbose>
                             <!-- mention service address otherwise it will generate default URL -->
-                            <!-- pattern : http://<host>:<port>/<project artifactId will be used as context-path here or you may have different context path>/<service end point> -->
+                            <!-- pattern : http://<host>:<port>/<project artifactId will be used
+                             as context-path here or you may have different context path>/<service end point> -->
                             <address>http://localhost:8080/${project.artifactId}/services/productService</address>
                         </configuration>
                         <goals>

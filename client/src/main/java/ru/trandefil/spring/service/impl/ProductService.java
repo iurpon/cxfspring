@@ -1,4 +1,4 @@
-package com.roytuts.service.impl;
+package ru.trandefil.spring.service.impl;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -74,8 +74,8 @@ public class ProductService extends Service {
      *     returns ProductService
      */
     @WebEndpoint(name = "ProductServiceImplPort")
-    public com.roytuts.service.ProductService getProductServiceImplPort() {
-        return super.getPort(ProductServiceImplPort, com.roytuts.service.ProductService.class);
+    public ru.trandefil.spring.service.ProductService getProductServiceImplPort() {
+        return super.getPort(ProductServiceImplPort, ru.trandefil.spring.service.ProductService.class);
     }
 
     /**
@@ -86,8 +86,8 @@ public class ProductService extends Service {
      *     returns ProductService
      */
     @WebEndpoint(name = "ProductServiceImplPort")
-    public com.roytuts.service.ProductService getProductServiceImplPort(WebServiceFeature... features) {
-        return super.getPort(ProductServiceImplPort, com.roytuts.service.ProductService.class, features);
+    public ru.trandefil.spring.service.ProductService getProductServiceImplPort(WebServiceFeature... features) {
+        return super.getPort(ProductServiceImplPort, ru.trandefil.spring.service.ProductService.class, features);
     }
 
 }

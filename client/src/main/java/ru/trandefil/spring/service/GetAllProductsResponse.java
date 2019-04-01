@@ -1,5 +1,5 @@
 
-package com.roytuts.service;
+package ru.trandefil.spring.service;
 
 import java.util.ArrayList;
 import java.util.List;

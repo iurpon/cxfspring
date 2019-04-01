@@ -1,7 +1,7 @@
-package com.roytuts.client;
+package ru.trandefil.spring.client;
 
-import com.roytuts.service.Product;
-import com.roytuts.service.ProductService;
+import ru.trandefil.spring.service.Product;
+import ru.trandefil.spring.service.ProductService;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ public class ProductClient {
     public static void main(String[] args) {
         try {
 
-            ProductService productService = new com.roytuts.service.impl.ProductService().getProductServiceImplPort();
+            ProductService productService = new ProductService().getProductServiceImplPort();
             Product product = productService.getProduct(101);
             System.out.println(product.getProductId());
             System.out.println(product.getProductName());

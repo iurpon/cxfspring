@@ -1,5 +1,5 @@
 
-package com.roytuts.service;
+package ru.trandefil.spring.service;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;

@@ -1,5 +1,5 @@
 
-package com.roytuts.service;
+package ru.trandefil.spring.service;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
