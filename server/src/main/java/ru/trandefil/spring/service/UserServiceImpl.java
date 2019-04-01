@@ -76,7 +76,8 @@ public class UserServiceImpl implements UserService {
 
     public Session getSession(@NonNull final String userName, @NonNull final String userPassword) {
         logger.info("====================================================get session");
-        final User user = userRepository.getLoggedUser(userName, HashUtil.hashPassword(userPassword));
+//        final User user = userRepository.getLoggedUser(userName, HashUtil.hashPassword(userPassword));
+        final User user = userRepository.getLoggedUser(userName, userPassword);
         if (user == null) {
             logger.info("---------------------------------------------------- bad user credential");
             return null;

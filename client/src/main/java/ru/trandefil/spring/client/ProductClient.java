@@ -1,5 +1,9 @@
 package ru.trandefil.spring.client;
 
+import ru.trandefil.spring.endpoint.UserEndPointImplService;
+import ru.trandefil.spring.generated.Session;
+import ru.trandefil.spring.generated.UserDTO;
+import ru.trandefil.spring.generated.UserEndPoint;
 import ru.trandefil.spring.service.Product;
 import ru.trandefil.spring.service.ProductService;
 
@@ -16,6 +20,14 @@ public class ProductClient {
             System.out.println(product.getProductCatg());
             List<Product> list = productService.getAllProducts();
             list.forEach(System.out::println);
+
+            UserEndPoint userEndPoint =  new UserEndPointImplService().getUserEndPointImplPort();
+            Session session = userEndPoint.getSession("root", "root");
+            if(session != null){
+                List<UserDTO> allUsers = userEndPoint.getAllUsers(session);
+                allUsers.forEach(System.out::println);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
