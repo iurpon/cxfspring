@@ -22,10 +22,16 @@
         </property>
     </bean>
 
+    <bean id="userEndPointImpl" class="ru.trandefil.spring.endpoint.UserEndPointImpl">
+        <property name="userService">
+            <ref bean="userServiceImpl"/>
+        </property>
+    </bean>
+
     <jaxws:endpoint id="productService" implementor="#productServiceImpl"
                     address="/productService"/>
 
-<!--    <jaxws:endpoint id="productService" implementor="#productServiceImpl"
-                    address="/productService"/>-->
+    <jaxws:endpoint id="userEndPoint" implementor="#userEndPointImpl"
+                    address="/userEndPoint"/>
 
 </beans>
