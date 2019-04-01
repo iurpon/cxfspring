@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ProductServiceService" targetNamespace="http://service.spring.trandefil.ru/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.spring.trandefil.ru/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xs:schema xmlns:tns="http://service.spring.trandefil.ru/" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://service.spring.trandefil.ru/" version="1.0">
+
+  <xs:element name="Product" type="tns:product"/>
+
+  <xs:element name="getAllProducts" type="tns:getAllProducts"/>
+
+  <xs:element name="getAllProductsResponse" type="tns:getAllProductsResponse"/>
+
+  <xs:element name="getProduct" type="tns:getProduct"/>
+
+  <xs:element name="getProductResponse" type="tns:getProductResponse"/>
+
+  <xs:complexType name="getAllProducts">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getAllProductsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:product"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="product">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="productCatg" type="xs:string"/>
+      <xs:element name="productId" type="xs:int"/>
+      <xs:element minOccurs="0" name="productName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getProduct">
+    <xs:sequence>
+      <xs:element name="productId" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getProductResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:product"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getAllProductsResponse">
+    <wsdl:part name="parameters" element="tns:getAllProductsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllProducts">
+    <wsdl:part name="parameters" element="tns:getAllProducts">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProduct">
+    <wsdl:part name="parameters" element="tns:getProduct">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getProductResponse">
+    <wsdl:part name="parameters" element="tns:getProductResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ProductService">
+    <wsdl:operation name="getAllProducts">
+      <wsdl:input name="getAllProducts" message="tns:getAllProducts">
+    </wsdl:input>
+      <wsdl:output name="getAllProductsResponse" message="tns:getAllProductsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProduct">
+      <wsdl:input name="getProduct" message="tns:getProduct">
+    </wsdl:input>
+      <wsdl:output name="getProductResponse" message="tns:getProductResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProductServiceServiceSoapBinding" type="tns:ProductService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getAllProducts">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllProducts">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllProductsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProduct">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getProduct">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getProductResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProductServiceService">
+    <wsdl:port name="ProductServicePort" binding="tns:ProductServiceServiceSoapBinding">
+      <soap:address location="http://localhost:8080/server/services/productService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
