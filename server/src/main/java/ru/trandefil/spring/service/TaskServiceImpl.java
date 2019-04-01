@@ -56,4 +56,15 @@ public class TaskServiceImpl implements TaskService {
         taskRepository.saveAll(tasks);
     }
 
+    @Override
+    @Transactional
+    public boolean deleteByName(@NonNull final String name) {
+        return taskRepository.deleteByName(name);
+    }
+
+    @Override
+    public Task getByName(@NonNull final String name) {
+        return taskRepository.getByName(name);
+    }
+
 }

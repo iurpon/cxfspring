@@ -20,4 +20,8 @@ public interface TaskService {
 
     void saveAll(List<Task> tasks);
 
+    boolean deleteByName(String name);
+
+    Task getByName(String name);
+
 }

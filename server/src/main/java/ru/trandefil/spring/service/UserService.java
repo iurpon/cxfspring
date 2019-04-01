@@ -1,5 +1,6 @@
 package ru.trandefil.spring.service;
 
+import ru.trandefil.spring.model.Session;
 import ru.trandefil.spring.model.User;
 
 import java.util.List;
@@ -17,5 +18,13 @@ public interface UserService {
     User getById(String id);
 
     User getByName(String name);
+
+    boolean deleteByName(String name);
+
+    User constractUser(String name,String pass,String role);
+
+    void logout(Session session);
+
+    Session getSession(String userName,String userPassword);
 
 }

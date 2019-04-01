@@ -16,4 +16,6 @@ public interface ProjectService {
 
     void deleteById(String id);
 
+    Project getByName(String name);
+
 }

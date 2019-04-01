@@ -1,6 +1,8 @@
 package ru.trandefil.spring.repository;
 
+import lombok.NonNull;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import ru.trandefil.spring.model.Task;
 
 import java.util.List;
@@ -12,20 +14,24 @@ public interface TaskRepository extends JpaRepository<Task,String> {
     List<Task> findAll();
 
     @Override
-    <S extends Task> S save(S s);
+    <S extends Task> S save(@NonNull final S s);
 
     @Override
-    Optional<Task> findById(String s);
+    Optional<Task> findById(@NonNull final String s);
 
     @Override
-    boolean existsById(String s);
+    boolean existsById(@NonNull final String s);
 
     @Override
-    void deleteById(String s);
+    void deleteById(@NonNull final String s);
 
     @Override
-    void delete(Task task);
+    void delete(@NonNull final Task task);
 
+    @Query("delete from t Task where t.name = :name")
+    boolean deleteByName(@NonNull final String name);
 
+    @Query("select t from Task t where t.name = :name")
+    Task getByName(@NonNull final String name);
 
 }
