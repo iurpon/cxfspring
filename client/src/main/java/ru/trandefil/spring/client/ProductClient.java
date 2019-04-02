@@ -1,6 +1,7 @@
 package ru.trandefil.spring.client;
 
 import ru.trandefil.spring.endpoint.ProjectEndPointImplService;
+import ru.trandefil.spring.endpoint.TaskEndPointImplService;
 import ru.trandefil.spring.endpoint.UserEndPointImplService;
 import ru.trandefil.spring.generated.*;
 
@@ -21,7 +22,9 @@ public class ProductClient {
             List<ProjectDTO> projects = projectEndPoint.getAllProjects(session);
             projects.forEach(System.out::println);
 
-//            TaskEndPoint
+            TaskEndPoint taskEndPoint = new TaskEndPointImplService().getTaskEndPointImplPort();
+            List<TaskDTO> taskDTOS = taskEndPoint.getAllTasks(session);
+            taskDTOS.forEach(System.out::println);
 
         } catch (Exception e) {
             e.printStackTrace();
