@@ -27,14 +27,26 @@ public class TaskEndPointImpl implements TaskEndPoint {
 
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
-    @Autowired
     private TaskService taskService;
 
-    @Autowired
     private ProjectService projectService;
 
-    @Autowired
     private UserService userService;
+
+    @Autowired
+    public void setTaskService(TaskService taskService) {
+        this.taskService = taskService;
+    }
+
+    @Autowired
+    public void setProjectService(ProjectService projectService) {
+        this.projectService = projectService;
+    }
+
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 
     @WebMethod
     @Override

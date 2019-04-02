@@ -31,6 +31,8 @@ public class ProductClient {
             List<ProjectDTO> projects = projectEndPoint.getAllProjects(session);
             projects.forEach(System.out::println);
 
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
