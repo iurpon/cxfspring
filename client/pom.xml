@@ -10,13 +10,12 @@
     <packaging>jar</packaging>
 
     <name>cxf-spring-client</name>
-    <url>http://maven.apache.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdk.version>1.8</jdk.version>
         <cxf.version>3.0.4</cxf.version>
-        <spring.version>4.0.5.RELEASE</spring.version>
+        <spring.version>5.1.5.RELEASE</spring.version>
     </properties>
 
     <dependencies>
