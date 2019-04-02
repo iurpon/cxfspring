@@ -6,14 +6,7 @@
     <link rel="stylesheet" type="text/css" href="resources/css/menu.css">
 </head>
 <body>
-<h1>Добро пожаловать!</h1>
-
-<ul class="menu">
-    <li><a class="menu" href="projects">See all Project</a></li>
-    <li><a class="menu" href="tasks">See all Tasks</a></li>
-    <!--<li><a class="menu" href="/logout">Logout</a></li>-->
-    <li><a class="menu" href="users">See all Users</a></li>
-</ul>
+<h1>Добро пожаловать! Это контроллер. Ещё не рест</h1>
 
 </body>
 </html>

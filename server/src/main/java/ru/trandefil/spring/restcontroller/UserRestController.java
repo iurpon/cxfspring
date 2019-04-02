@@ -31,7 +31,7 @@ public class UserRestController {
     }
 
 
-    @GetMapping(value = "/rest/users",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/users",produces = MediaType.APPLICATION_JSON_VALUE)
     public List<User> getUsers(){
         logger.info("=========================== user rest controller get users");
         return userService.getAll();
