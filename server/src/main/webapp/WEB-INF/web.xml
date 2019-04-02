@@ -5,6 +5,7 @@
          id="WebApp_ID" version="3.0">
     <display-name>Product Service Web Service</display-name>
 
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:spring-beans.xml</param-value>
@@ -13,6 +14,20 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:dispatcher-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
 
 
     <context-param>
@@ -23,7 +38,7 @@
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
+        <load-on-startup>3</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
@@ -40,4 +55,5 @@
         <servlet-name>CXFServlet</servlet-name>
         <url-pattern>/services/*</url-pattern>
     </servlet-mapping>
+
 </web-app>
