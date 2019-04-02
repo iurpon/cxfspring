@@ -68,10 +68,13 @@
                                     <extraargs>
                                         <extraarg>-client</extraarg>
                                     </extraargs>>-->
-                                    <wsdl>http://localhost:8080/server/services/taskEndPoint?wsdl</wsdl>
                                     <wsdl>http://localhost:8080/server/services/userEndPoint?wsdl</wsdl>
+                                </wsdlOption>
+                                <wsdlOption>
+                                    <wsdl>http://localhost:8080/server/services/taskEndPoint?wsdl</wsdl>
+                                </wsdlOption>
+                                <wsdlOption>
                                     <wsdl>http://localhost:8080/server/services/projectEndPoint?wsdl</wsdl>
-
                                 </wsdlOption>
                             </wsdlOptions>
                         </configuration>
