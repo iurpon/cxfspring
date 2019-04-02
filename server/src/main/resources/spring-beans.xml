@@ -11,16 +11,7 @@
     <import resource="classpath:applicationContext-persistence.xml"/>
 
     <context:component-scan base-package="ru.trandefil.spring.service"/>
-    <context:component-scan base-package="ru.trandefil.spring.service"/>
     <context:component-scan base-package="ru.trandefil.spring.endpoint"/>
-
-    <bean id="mockDataLayer" class="ru.trandefil.spring.mock.ProductServiceMockDaoImpl"/>
-
-    <bean id="productServiceImpl" class="ru.trandefil.spring.service.impl.ProductServiceImpl">
-        <property name="productServiceMockImpl">
-            <ref bean="mockDataLayer"/>
-        </property>
-    </bean>
 
     <bean id="userEndPointImpl" class="ru.trandefil.spring.endpoint.UserEndPointImpl">
         <property name="userService">
@@ -37,13 +28,25 @@
         </property>
     </bean>
 
-    <jaxws:endpoint id="productService" implementor="#productServiceImpl"
-                    address="/productService"/>
+    <bean id="taskEndPointImpl" class="ru.trandefil.spring.endpoint.TaskEndPointImpl">
+        <property name="userService">
+            <ref bean="userServiceImpl"/>
+        </property>
+        <property name="projectService">
+            <ref bean="projectServiceImpl"/>
+        </property>
+        <property name="taskService">
+            <ref bean="taskServiceImpl"/>
+        </property>
+    </bean>
 
     <jaxws:endpoint id="userEndPoint" implementor="#userEndPointImpl"
                     address="/userEndPoint"/>
 
     <jaxws:endpoint id="projectEndPoint" implementor="#projectEndPointImpl"
                     address="/projectEndPoint"/>
+
+    <jaxws:endpoint id="taskEndPoint" implementor="#taskEndPointImpl"
+                    address="/taskEndPoint"/>
 
 </beans>

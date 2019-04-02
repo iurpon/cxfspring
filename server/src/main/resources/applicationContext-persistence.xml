@@ -62,4 +62,5 @@
       repository interfaces
     -->
     <jpa:repositories base-package="ru.trandefil.spring.repository"/>
+
 </beans>
