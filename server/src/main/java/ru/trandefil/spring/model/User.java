@@ -1,5 +1,6 @@
 package ru.trandefil.spring.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,6 +26,7 @@ public class User extends AbstractEntity {
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
     private List<Project> projects = new ArrayList<>();
 

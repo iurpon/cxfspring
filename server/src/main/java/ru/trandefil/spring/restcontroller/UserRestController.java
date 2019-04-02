@@ -24,7 +24,7 @@ public class UserRestController {
         logger.info("========================== post construct userService : " +  userService);
     }
 
-    @GetMapping(value = "/rest",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/server/rest")
     public String hello(){
         logger.info("=========================== user rest controller hello");
         return "hello";

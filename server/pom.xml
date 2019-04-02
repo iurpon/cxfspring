@@ -34,16 +34,9 @@
         <!-- Spring dependencies -->
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
-        <dependency>
-            <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
@@ -71,14 +64,14 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.0.1</version>
-            <!--<scope>provided</scope>-->
+            <scope>provided</scope>
         </dependency>
-        <dependency>
+<!--        <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>javax.servlet.jsp-api</artifactId>
             <version>2.3.1</version>
-            <!--<scope>provided</scope>-->
-        </dependency>
+            <scope>provided</scope>
+        </dependency>-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
@@ -171,13 +164,13 @@
                 <version>2.2</version>
             </plugin>
 
-            <!--            <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-war-plugin</artifactId>
-                        </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+            </plugin>
 
             <!-- apache cxf plugin for generating wsdl -->
-            <plugin>
+<!--            <plugin>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-java2ws-plugin</artifactId>
                 <version>${cxf.version}</version>
@@ -186,15 +179,15 @@
                         <id>process-classes</id>
                         <phase>process-classes</phase>
                         <configuration>
-                            <!-- service endpoint interface or class -->
+                            &lt;!&ndash; service endpoint interface or class &ndash;&gt;
                             <className>ru.trandefil.spring.service.ProductService</className>
-                            <!-- location where wsdl file will be generated -->
+                            &lt;!&ndash; location where wsdl file will be generated &ndash;&gt;
                             <outputFile>${project.basedir}/src/main/resources/wsdl/ProductService.wsdl</outputFile>
                             <genWsdl>true</genWsdl>
                             <verbose>true</verbose>
-                            <!-- mention service address otherwise it will generate default URL -->
-                            <!-- pattern : http://<host>:<port>/<project artifactId will be used
-                             as context-path here or you may have different context path>/<service end point> -->
+                            &lt;!&ndash; mention service address otherwise it will generate default URL &ndash;&gt;
+                            &lt;!&ndash; pattern : http://<host>:<port>/<project artifactId will be used
+                             as context-path here or you may have different context path>/<service end point> &ndash;&gt;
                             <address>http://localhost:8080/${project.artifactId}/services/productService</address>
                         </configuration>
                         <goals>
@@ -202,7 +195,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
 
         </plugins>
     </build>
