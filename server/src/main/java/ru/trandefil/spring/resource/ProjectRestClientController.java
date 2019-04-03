@@ -8,7 +8,7 @@ import ru.trandefil.spring.model.Project;
 
 import java.util.List;
 
-public class ProjectRestServerController implements AbstractEntityRestController<Project> {
+public class ProjectRestClientController implements AbstractEntityRestController<Project> {
 
     private final String PROJECTS_URL = "http://localhost:8080/server/rest/projects/";
 
