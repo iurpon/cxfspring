@@ -32,17 +32,26 @@ public class UserRestController {
         return user;
     }
 
-    @PutMapping(value = "/users/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void update(@RequestBody User user, @PathVariable("id") String id){
+    @PutMapping(value = "/users/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void update(@RequestBody User user, @PathVariable("id") String id) {
         logger.info("=========================== user rest controller update user{id}");
-        userService.update(user,id);
+        userService.update(user, id);
     }
 
     @DeleteMapping(value = "/users/{id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable("id") String id){
+    public void delete(@PathVariable("id") String id) {
         logger.info("============================= user rest controller delete user{id}");
         userService.deleteById(id);
+    }
+
+    @PostMapping(
+            value = "/users",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public User create(@RequestBody User user) {
+        return userService.save(user);
     }
 
 }

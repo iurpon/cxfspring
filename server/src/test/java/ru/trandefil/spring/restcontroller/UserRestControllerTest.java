@@ -21,7 +21,6 @@ public class UserRestControllerTest {
 
     private final User TEST = new User("bf6ff99e-e53a-4562-a934-1e364684ced0", "test", "test", Role.USER);
 
-
     @Before
     public void before() {
         final String url = "http://localhost:8080/server/rest/users/" + TEST.getId();
@@ -73,6 +72,19 @@ public class UserRestControllerTest {
         final String url = "http://localhost:8080/server/rest/users/" + TEST.getId();
         final RestTemplate template = new RestTemplate();
         template.delete(url);
+    }
+
+    @Test
+    public void create(){
+        final User newUser = new User(null,"new","new",Role.USER);
+        final String url = "http://localhost:8080/server/rest/users/";
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<User> request = new HttpEntity<>(newUser);
+        User created = restTemplate.postForObject(url, request, User.class);
+        System.out.println("created : " + created);
+        final String urlForDelete = "http://localhost:8080/server/rest/users/" + created.getId();
+        final RestTemplate template = new RestTemplate();
+        template.delete(urlForDelete);
     }
 
 }
