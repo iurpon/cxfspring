@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.trandefil.spring.enums.Role;
+import ru.trandefil.spring.exception.BadUserIdException;
 import ru.trandefil.spring.model.Session;
 import ru.trandefil.spring.model.User;
 import ru.trandefil.spring.repository.UserRepository;
@@ -86,6 +87,16 @@ public class UserServiceImpl implements UserService {
         final Session newSess = createNewSession(user.getId(), user.getRole());
         logger.info("created session : " + newSess);
         return newSess;
+    }
+
+    @Override
+    @Transactional
+    public User update(User user, String id) {
+        logger.info("======================================= user service update " + user);
+        if(!user.getId().equals(id)){
+            throw new BadUserIdException(" bad user id");
+        }
+        return userRepository.save(user);
     }
 
     private Session createNewSession(@NonNull final String userId, @NonNull final Role role) {

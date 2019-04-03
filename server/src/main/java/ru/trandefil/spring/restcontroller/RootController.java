@@ -10,4 +10,5 @@ public class RootController {
     public String root() {
         return "hello";
     }
+
 }

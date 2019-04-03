@@ -27,4 +27,6 @@ public interface UserService {
 
     Session getSession(String userName,String userPassword);
 
+    User update(User user, String id);
+
 }

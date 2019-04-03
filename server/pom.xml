@@ -117,7 +117,6 @@
             <version>7.0</version>
         </dependency>
 
-
         <!-- https://mvnrepository.com/artifact/org.ocpsoft.rewrite/rewrite-config-prettyfaces -->
         <dependency>
             <groupId>org.ocpsoft.rewrite</groupId>
@@ -132,7 +131,6 @@
             <version>3.4.2.Final</version>
         </dependency>
 
-
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -140,6 +138,20 @@
             <version>2.9.8</version>
         </dependency>
 
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.1.6.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
 
 
     </dependencies>
