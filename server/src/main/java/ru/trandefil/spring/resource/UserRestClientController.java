@@ -4,7 +4,7 @@ import ru.trandefil.spring.model.User;
 
 import java.util.List;
 
-public class UserRestClientController implements UserRestServerController {
+public class UserRestClientController implements UserRestController {
     @Override
     public List<User> getUsers() {
         return null;
