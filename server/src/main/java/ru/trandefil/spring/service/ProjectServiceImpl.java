@@ -4,6 +4,7 @@ import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.trandefil.spring.exception.BadUserIdException;
 import ru.trandefil.spring.model.Project;
 import ru.trandefil.spring.model.Session;
 import ru.trandefil.spring.model.User;
@@ -83,6 +84,15 @@ public class ProjectServiceImpl implements ProjectService {
     public void deleteByName(String projectName) {
         Project byName = projectRepository.getByName(projectName);
         projectRepository.delete(byName);
+    }
+
+    @Override
+    @Transactional
+    public Project update(Project project, String id) {
+        if(!project.getId().equals(id)){
+            throw new BadUserIdException("project bad id");
+        }
+        return projectRepository.save(project);
     }
 
 }

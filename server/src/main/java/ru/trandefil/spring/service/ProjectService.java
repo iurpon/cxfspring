@@ -24,4 +24,7 @@ public interface ProjectService {
     Project update(Project fromDTO);
 
     void deleteByName(String projectName);
+
+    Project update(Project project, String id);
+
 }
