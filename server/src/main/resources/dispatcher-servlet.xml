@@ -16,7 +16,7 @@
     </bean>
 
     <mvc:annotation-driven/>
-    <context:component-scan base-package="ru.trandefil.spring.restcontroller"/>
+    <context:component-scan base-package="ru.trandefil.spring.resources"/>
 
 
 </beans>

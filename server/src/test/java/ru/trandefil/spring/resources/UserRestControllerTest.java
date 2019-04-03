@@ -1,4 +1,4 @@
-package ru.trandefil.spring.restcontroller;
+package ru.trandefil.spring.resources;
 
 import org.junit.Before;
 import org.junit.Test;

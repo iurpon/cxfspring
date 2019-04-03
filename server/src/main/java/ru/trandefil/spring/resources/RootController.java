@@ -1,4 +1,4 @@
-package ru.trandefil.spring.restcontroller;
+package ru.trandefil.spring.resources;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

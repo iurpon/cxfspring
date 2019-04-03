@@ -1,4 +1,4 @@
-package ru.trandefil.spring.restcontroller;
+package ru.trandefil.spring.resources;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
