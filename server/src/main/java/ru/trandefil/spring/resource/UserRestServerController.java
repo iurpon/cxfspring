@@ -11,40 +11,38 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
-public class UserRestServerController implements UserRestController {
+public class UserRestServerController implements AbstractEntityRestController<User> {
 
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
     @Autowired
     private UserService userService;
 
-
     @Override
     @GetMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<User> getUsers() {
+    public List<User> getAllEntities() {
         logger.info("=========================== user rest controller get users");
         return userService.getAll();
     }
 
     @Override
     @GetMapping(value = "/users/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public User getUser(@PathVariable("id") String id) {
+    public User getEntity(@PathVariable("id") String id) {
         logger.info("=========================== user rest controller get user{id}");
-        final User user = userService.getById(id);
-        return user;
+        return userService.getById(id);
     }
 
     @Override
     @PutMapping(value = "/users/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void update(@RequestBody User user, @PathVariable("id") String id) {
+    public User updateEntity(@RequestBody User user, @PathVariable("id") String id) {
         logger.info("=========================== user rest controller update user{id}");
-        userService.update(user, id);
+        return userService.update(user, id);
     }
 
     @Override
     @DeleteMapping(value = "/users/{id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable("id") String id) {
+    public void deleteEntity(@PathVariable("id") String id) {
         logger.info("============================= user rest controller delete user{id}");
         userService.deleteById(id);
     }
@@ -55,7 +53,7 @@ public class UserRestServerController implements UserRestController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public User create(@RequestBody User user) {
+    public User createEntity(@RequestBody User user) {
         return userService.save(user);
     }
 
