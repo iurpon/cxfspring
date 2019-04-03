@@ -33,7 +33,7 @@ public class ProjectRestClientController implements AbstractEntityRestController
     }
 
     @Override
-    public Project updateEntity(@NonNull final Project entity,@NonNull final String id) {
+    public Project updateEntity(@NonNull final Project entity, @NonNull final String id) {
         final HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         final HttpEntity<Project> requestUpdate = new HttpEntity<>(entity, headers);

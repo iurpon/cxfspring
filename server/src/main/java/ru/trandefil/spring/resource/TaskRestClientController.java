@@ -1,5 +1,6 @@
 package ru.trandefil.spring.resource;
 
+import lombok.NonNull;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
@@ -25,14 +26,14 @@ public class TaskRestClientController implements AbstractEntityRestController<Ta
     }
 
     @Override
-    public Task getEntity(String id) {
+    public Task getEntity(@NonNull final String id) {
         final RestTemplate restTemplate = new RestTemplate();
         final ResponseEntity<Task> projectResponseEntity = restTemplate.getForEntity(TASKS_URL + id, Task.class);
         return projectResponseEntity.getBody();
     }
 
     @Override
-    public Task updateEntity(Task entity, String id) {
+    public Task updateEntity(@NonNull final Task entity, @NonNull final String id) {
         final HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         final HttpEntity<Task> requestUpdate = new HttpEntity<>(entity, headers);
@@ -41,13 +42,13 @@ public class TaskRestClientController implements AbstractEntityRestController<Ta
     }
 
     @Override
-    public void deleteEntity(String id) {
+    public void deleteEntity(@NonNull final String id) {
         final RestTemplate template = new RestTemplate();
         template.delete(TASKS_URL + id);
     }
 
     @Override
-    public Task createEntity(Task entity) {
+    public Task createEntity(@NonNull final Task entity) {
         final RestTemplate restTemplate = new RestTemplate();
         final HttpEntity<Task> request = new HttpEntity<>(entity);
         return restTemplate.postForObject(TASKS_URL, request, Task.class);
