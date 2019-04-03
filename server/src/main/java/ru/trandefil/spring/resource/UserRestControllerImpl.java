@@ -1,4 +1,4 @@
-package ru.trandefil.spring.resources;
+package ru.trandefil.spring.resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
-public class UserRestControllerImpl implements UserRestController {
+public class UserRestControllerImpl implements UserRestServerController {
 
     private Logger logger = Logger.getLogger(this.getClass().getName());
 

@@ -145,15 +145,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>5.1.6.RELEASE</version>
-            <scope>test</scope>
-        </dependency>
-
-
     </dependencies>
 
     <build>
@@ -194,7 +185,7 @@
                             &lt;!&ndash; service endpoint interface or class &ndash;&gt;
                             <className>ru.trandefil.spring.service.ProductService</className>
                             &lt;!&ndash; location where wsdl file will be generated &ndash;&gt;
-                            <outputFile>${project.basedir}/src/main/resources/wsdl/ProductService.wsdl</outputFile>
+                            <outputFile>${project.basedir}/src/main/resource/wsdl/ProductService.wsdl</outputFile>
                             <genWsdl>true</genWsdl>
                             <verbose>true</verbose>
                             &lt;!&ndash; mention service address otherwise it will generate default URL &ndash;&gt;

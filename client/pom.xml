@@ -64,7 +64,7 @@
                             <wsdlOptions>
                                 <wsdlOption>
                                     <!-- put the wsdl file in this location -->
-                                    <!--<wsdl>${project.basedir}/src/main/resources/wsdl/ProductService.wsdl</wsdl
+                                    <!--<wsdl>${project.basedir}/src/main/resource/wsdl/ProductService.wsdl</wsdl
                                     <extraargs>
                                         <extraarg>-client</extraarg>
                                     </extraargs>>-->

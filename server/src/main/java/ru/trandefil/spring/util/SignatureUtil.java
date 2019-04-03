@@ -14,7 +14,7 @@ public class SignatureUtil {
     private static String generateSignature(final String allFields) {
         logger.info("====================================================genarate signature");
         logger.info("====================================================allFiels " + allFields);
-/*        try (InputStream inputStream = ClassLoader.getSystemResourceAsStream("src/main/webapp/resources/prop.properties")) {
+/*        try (InputStream inputStream = ClassLoader.getSystemResourceAsStream("src/main/webapp/resource/prop.properties")) {
             logger.info("==================================================== properties  read. inputStream : " + inputStream);
             final Properties properties = new Properties();
             properties.load(inputStream);

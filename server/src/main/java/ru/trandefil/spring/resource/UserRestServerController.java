@@ -1,10 +1,10 @@
-package ru.trandefil.spring.resources;
+package ru.trandefil.spring.resource;
 
 import ru.trandefil.spring.model.User;
 
 import java.util.List;
 
-public interface UserRestController {
+public interface UserRestServerController {
 
     List<User> getUsers();
 
