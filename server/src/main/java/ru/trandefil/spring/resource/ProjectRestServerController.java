@@ -16,20 +16,20 @@ public class ProjectRestServerController implements AbstractEntityRestController
     private ProjectService projectService;
 
     @Override
-    @GetMapping(value = "/tasks", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/projects", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Project> getAllEntities() {
         return projectService.getAll();
     }
 
     @Override
-    @GetMapping(value = "/tasks/{id}")
+    @GetMapping(value = "/projects/{id}")
     public Project getEntity(@PathVariable("id") String id) {
         return projectService.getById(id);
     }
 
     @Override
     @PutMapping(
-            value = "/tasks/{id}",
+            value = "/projects/{id}",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Project updateEntity(@RequestBody Project entity,@PathVariable("id") String id) {
@@ -44,7 +44,13 @@ public class ProjectRestServerController implements AbstractEntityRestController
     }
 
     @Override
-    public Project createEntity(Project entity) {
-        return null;
+    @PostMapping(
+            value = "/users",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public Project createEntity(@RequestBody Project entity) {
+        return projectService.save(entity);
     }
+
 }

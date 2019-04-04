@@ -4,6 +4,7 @@ import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.trandefil.spring.exception.BadUserIdException;
 import ru.trandefil.spring.model.Task;
 import ru.trandefil.spring.repository.TaskRepository;
 
@@ -66,6 +67,15 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public Task getByName(@NonNull final String name) {
         return taskRepository.getByName(name);
+    }
+
+    @Override
+    @Transactional
+    public Task update(Task entity, String id) {
+        if(!entity.getId().equals(id)){
+            throw new BadUserIdException("wrong task id");
+        }
+        return taskRepository.save(entity);
     }
 
 }

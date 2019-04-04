@@ -24,4 +24,5 @@ public interface TaskService {
 
     Task getByName(String name);
 
+    Task update(Task entity, String id);
 }
