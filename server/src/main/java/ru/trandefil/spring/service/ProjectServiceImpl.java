@@ -12,6 +12,7 @@ import ru.trandefil.spring.repository.ProjectRepository;
 import ru.trandefil.spring.repository.UserRepository;
 import ru.trandefil.spring.util.UUIDUtil;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -26,6 +27,16 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @PostConstruct
+    public void testContruct(){
+        System.out.println("=============================PostConstruct test()");
+    }
+
+    @Autowired
+    public void test(){
+        System.out.println("=============================AUTOWIRED test()");
+    }
 
     @Override
     @Transactional
