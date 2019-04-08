@@ -45,7 +45,7 @@ public class ProjectRestServerController implements AbstractEntityRestController
 
     @Override
     @PostMapping(
-            value = "/users",
+            value = "/projects",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
