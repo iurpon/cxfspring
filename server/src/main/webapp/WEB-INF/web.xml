@@ -12,6 +12,7 @@
         <param-value>classpath:spring-beans.xml</param-value>
     </context-param>
 
+
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -27,7 +28,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>/rest/*</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <!-- Spring Security -->

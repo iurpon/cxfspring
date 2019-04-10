@@ -11,4 +11,14 @@ public class RootController {
         return "hello";
     }
 
+    @GetMapping("/hello")
+    public String yo() {
+        return "hello";
+    }
+
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
+
 }
