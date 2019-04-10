@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
+@RequestMapping(value = "/rest")
 public class UserRestServerController implements AbstractEntityRestController<User> {
 
     private Logger logger = Logger.getLogger(this.getClass().getName());

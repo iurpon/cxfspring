@@ -10,6 +10,7 @@ import ru.trandefil.spring.service.TaskService;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/rest")
 public class TaskRestServerController implements AbstractEntityRestController<Task> {
 
     @Autowired

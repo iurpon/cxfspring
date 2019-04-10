@@ -10,6 +10,7 @@ import ru.trandefil.spring.service.ProjectService;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/rest")
 public class ProjectRestServerController implements AbstractEntityRestController<Project> {
 
     @Autowired

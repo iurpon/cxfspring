@@ -6,11 +6,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import ru.trandefil.spring.model.User;
 
-import java.security.Principal;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Set;
 
 public class LoggedUser implements UserDetails {
 
@@ -20,10 +18,10 @@ public class LoggedUser implements UserDetails {
         this.user = user;
     }
 
-    public static LoggedUser getLoggedUser(){
+    public static LoggedUser getLoggedUser() {
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         final Object principal = authentication.getPrincipal();
-        if(principal instanceof LoggedUser) return  (LoggedUser)principal;
+        if (principal instanceof LoggedUser) return (LoggedUser) principal;
         return null;
     }
 
@@ -34,12 +32,12 @@ public class LoggedUser implements UserDetails {
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return user == null ? null : user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getName();
+        return user == null ? null : user.getName();
     }
 
     @Override
