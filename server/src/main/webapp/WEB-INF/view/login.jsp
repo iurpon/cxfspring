@@ -9,11 +9,11 @@
 </head>
 <body>
 
-    <form method="post" action="login" class="ui-form">
+    <form method="post" action="spring_security_check" class="ui-form">
         <h3 class="whiteTextOverride">${message}</h3>
         <h3>Log In</h3>
         <div class="form-row">
-            <input type="text"  id="name" name="name" required autocomplete="off"><label for="name">Name</label>
+            <input type="text"  id="name" name="username" required autocomplete="off"><label for="name">Name</label>
         </div>
         <div class="form-row">
             <input type="password"  id="password" name="password" required autocomplete="off"><label for="password">Password</label>

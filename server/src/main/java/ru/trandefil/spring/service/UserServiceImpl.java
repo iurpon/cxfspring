@@ -2,8 +2,12 @@ package ru.trandefil.spring.service;
 
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.trandefil.spring.LoggedUser;
 import ru.trandefil.spring.enums.Role;
 import ru.trandefil.spring.exception.BadUserIdException;
 import ru.trandefil.spring.model.Session;
@@ -19,7 +23,7 @@ import java.util.logging.Logger;
 
 @Service
 @Transactional(readOnly = true)
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -127,6 +131,12 @@ public class UserServiceImpl implements UserService {
         }
         System.out.println("bad user role.");
         return null;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        final User user = getByName(username);
+        return new LoggedUser(user);
     }
 
 }
