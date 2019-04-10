@@ -10,7 +10,7 @@ import java.util.List;
 
 public class TaskRestClientController implements AbstractEntityRestController<Task> {
 
-    private final String TASKS_URL = "http://localhost:8080/server/rest/tasks/";
+    private final String TASKS_URL = "http://localhost:8080/rest/tasks/";
 
     @Override
     public List<Task> getAllEntities() {

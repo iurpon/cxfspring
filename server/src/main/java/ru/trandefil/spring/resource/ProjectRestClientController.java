@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ProjectRestClientController implements AbstractEntityRestController<Project> {
 
-    private final String PROJECTS_URL = "http://localhost:8080/server/rest/projects/";
+    private final String PROJECTS_URL = "http://localhost:8080/rest/projects/";
 
     @Override
     public List<Project> getAllEntities() {

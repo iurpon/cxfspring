@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UserRestClientController implements AbstractEntityRestController<User> {
 
-    private final String USERS_URL = "http://localhost:8080/server/rest/users/";
+    private final String USERS_URL = "http://localhost:8080/rest/users/";
 
     @Override
     public List<User> getAllEntities() {
