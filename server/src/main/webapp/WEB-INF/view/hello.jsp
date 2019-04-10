@@ -7,6 +7,6 @@
 </head>
 <body>
 <h1>Добро пожаловать! Это контроллер. Ещё не рест</h1>
-
+<a href="/logout">Logout</a>
 </body>
 </html>
