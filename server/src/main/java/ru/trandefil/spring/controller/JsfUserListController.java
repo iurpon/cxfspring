@@ -8,7 +8,13 @@ import ru.trandefil.spring.service.UserService;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 
@@ -39,6 +45,16 @@ public class JsfUserListController {
 
     public void removeById(String id){
         userService.deleteById(id);
+    }
+
+    public void logout() throws ServletException, IOException {
+        ExternalContext context = FacesContext.getCurrentInstance()
+                .getExternalContext();
+
+        RequestDispatcher dispatcher = ((ServletRequest) context.getRequest()).getRequestDispatcher("/logout");
+
+        dispatcher.forward((ServletRequest) context.getRequest(),
+                (ServletResponse) context.getResponse());
     }
 
 }

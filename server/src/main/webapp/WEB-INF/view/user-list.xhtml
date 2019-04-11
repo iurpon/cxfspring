@@ -24,6 +24,10 @@
             <p:button outcome="task-list" value="Task List" icon="pi pi-star" style="margin-right:20px;">
             </p:button>
 
+            <p:commandButton value="Logout" action="#{jsfUserListController.logout()}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+
+            <h:outputLink value="${pageContext.request.contextPath}/logout">Logout</h:outputLink>
+
         </div>
         <p:spacer height="20" />
         <p:dataTable id="usersTable" value="#{jsfUserListController.getUsers()}" var="user"  style="width:700px;">
