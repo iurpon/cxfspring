@@ -17,15 +17,16 @@ import ru.trandefil.spring.util.HashUtil;
 import ru.trandefil.spring.util.SignatureUtil;
 import ru.trandefil.spring.util.UUIDUtil;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Logger;
 
 
 @Service
 @Transactional(readOnly = true)
-public class UserServiceImpl implements UserService, UserDetailsService {
+public class UserServiceImpl implements UserService, UserDetailsService, Serializable {
 
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final transient Logger logger = Logger.getLogger(this.getClass().getName());
 
     @Autowired
     private UserRepository userRepository;
