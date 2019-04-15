@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.trandefil.spring.LoggedUser;
 
+import javax.servlet.http.HttpSession;
 import java.util.logging.Logger;
 
 @Controller
@@ -24,6 +25,11 @@ public class RootController {
 
     @GetMapping("/login")
     public String login() {
+        return "login";
+    }
+
+    @GetMapping("/session")
+    public String session(HttpSession httpSession){
         return "login";
     }
 

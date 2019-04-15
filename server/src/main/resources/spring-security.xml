@@ -1,8 +1,11 @@
 <beans:beans xmlns="http://www.springframework.org/schema/security"
              xmlns:beans="http://www.springframework.org/schema/beans"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+             xmlns:context="http://www.springframework.org/schema/context"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+             http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security.xsd">
 
     <http pattern="/resources/**" security="none"/>
     <http pattern="/webjars/**" security="none"/>
@@ -23,7 +26,7 @@
         <intercept-url pattern="/**/admin/**" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/**" access="isAuthenticated()"/>
 
-        <form-login login-page="/login" default-target-url="/hello"
+        <form-login login-page="/login" default-target-url="/hello" authentication-success-forward-url="/index"
                     authentication-failure-url="/login?error=true"
                     login-processing-url="/spring_security_check"/>
         <logout logout-success-url="/login"/>
@@ -36,4 +39,7 @@
            <password-encoder ref="noopEncoder"/>
         </authentication-provider>
     </authentication-manager>
+
+
+
 </beans:beans>

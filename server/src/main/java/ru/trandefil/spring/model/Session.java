@@ -5,8 +5,8 @@ import ru.trandefil.spring.enums.Role;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "sessions")
+/*@Entity
+@Table(name = "sessions")*/
 public class Session extends AbstractEntity {
 
     private long timestamp;
