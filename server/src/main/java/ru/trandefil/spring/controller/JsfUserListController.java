@@ -29,9 +29,6 @@ public class JsfUserListController implements Serializable {
     @Autowired
     private transient UserService userService;
 
-    @Autowired
-    private transient HttpSession session;
-
     @PostConstruct
     private void init() {
         FacesContextUtils
@@ -40,10 +37,7 @@ public class JsfUserListController implements Serializable {
     }
 
     public List<User> getUsers() {
-        Enumeration<String> attributeNames = session.getAttributeNames();
-        while (attributeNames.hasMoreElements()){
-            System.out.println(attributeNames.nextElement());
-        }
+
         System.out.println(" jsf task list controller getUsers");
         if (userService == null) {
             System.out.println("not injected user service");
