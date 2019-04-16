@@ -32,6 +32,13 @@ import javax.xml.bind.annotation.XmlType;
     "success"
 })
 public class Result {
+    @Override
+    public String toString() {
+        return "Result{" +
+                "message='" + message + '\'' +
+                ", success=" + success +
+                '}';
+    }
 
     protected String message;
     protected Boolean success;

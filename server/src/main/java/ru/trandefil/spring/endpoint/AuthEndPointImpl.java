@@ -25,17 +25,6 @@ public class AuthEndPointImpl implements AuthEndPoint {
     @Qualifier("org.springframework.security.authenticationManager")
     private AuthenticationManager authenticationManager;
 
-/*
-    @Autowired
-    public void setAuthenticationManager(AuthenticationManager authenticationManager) {
-        this.authenticationManager = authenticationManager;
-    }
-
-    public AuthenticationManager getAuthenticationManager() {
-        return authenticationManager;
-    }
-*/
-
     @Override
     @WebMethod
     public Result login(@NonNull final String name, @NonNull final String password) {
@@ -62,7 +51,8 @@ public class AuthEndPointImpl implements AuthEndPoint {
         final Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         LoggedUser loggedUser = null;
         if (principal instanceof UserDetails) loggedUser = (LoggedUser) principal;
-        return loggedUser;
+        System.out.println("============================== logged user is null");
+        return loggedUser ;
     }
 
 }

@@ -3,9 +3,10 @@ package ru.trandefil.spring.service;
 import ru.trandefil.spring.model.Session;
 import ru.trandefil.spring.model.User;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface UserService {
+public interface UserService extends Serializable {
 
     User getLoggedUser(String userName, String password);
 

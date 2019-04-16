@@ -6,11 +6,12 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import ru.trandefil.spring.model.User;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
 
-public interface UserRepository extends JpaRepository<User, String> {
+public interface UserRepository extends JpaRepository<User, String>, Serializable {
 
     @Override
     <S extends User> S save(S s);

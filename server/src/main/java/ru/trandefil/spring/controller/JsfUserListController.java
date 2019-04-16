@@ -1,7 +1,6 @@
 package ru.trandefil.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.session.Session;
 import org.springframework.web.jsf.FacesContextUtils;
 import ru.trandefil.spring.model.User;
 import ru.trandefil.spring.service.UserService;
@@ -15,16 +14,16 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.Enumeration;
 import java.util.List;
 
 
 @ViewScoped
 @ManagedBean
 public class JsfUserListController implements Serializable {
+
+    private static final long serialVersionUID = 10L;
 
     @Autowired
     private transient UserService userService;
@@ -48,7 +47,7 @@ public class JsfUserListController implements Serializable {
         return all;
     }
 
-    public void removeById(String id){
+    public void removeById(String id) {
         userService.deleteById(id);
     }
 
