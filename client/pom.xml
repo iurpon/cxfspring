@@ -76,6 +76,9 @@
                                 <wsdlOption>
                                     <wsdl>http://localhost:8080/services/projectEndPoint?wsdl</wsdl>
                                 </wsdlOption>
+                                <wsdlOption>
+                                    <wsdl>http://localhost:8080/services/authEndPoint?wsdl</wsdl>
+                                </wsdlOption>
                             </wsdlOptions>
                         </configuration>
                         <goals>
