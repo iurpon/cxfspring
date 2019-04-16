@@ -26,7 +26,6 @@ public class JsfUserEditController implements Serializable{
 
     private transient User user = new User();
 
-    @PostConstruct
     public void init() {
         logger.info("=============== jsfUserEditController init");
         FacesContextUtils
