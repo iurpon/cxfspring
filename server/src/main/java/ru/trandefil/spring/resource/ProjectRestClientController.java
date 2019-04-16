@@ -3,11 +3,13 @@ package ru.trandefil.spring.resource;
 import lombok.NonNull;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import ru.trandefil.spring.model.Project;
 
 import java.util.List;
 
+@Component
 public class ProjectRestClientController implements AbstractEntityRestController<Project> {
 
     private final String PROJECTS_URL = "http://localhost:8080/rest/projects/";
