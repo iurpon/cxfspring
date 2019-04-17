@@ -1,11 +1,13 @@
 package ru.trandefil.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import org.springframework.web.jsf.FacesContextUtils;
 import ru.trandefil.spring.model.User;
 import ru.trandefil.spring.service.UserService;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -13,9 +15,10 @@ import java.io.Serializable;
 import java.util.logging.Logger;
 
 
-@ViewScoped
+
 @ManagedBean
-public class JsfUserEditController implements Serializable{
+@ApplicationScoped
+public class JsfUserEditController extends SpringBeanAutowiringSupport implements Serializable{
 
     @Autowired
     private transient UserService userService;
@@ -28,9 +31,7 @@ public class JsfUserEditController implements Serializable{
 
     public void init() {
         logger.info("=============== jsfUserEditController init");
-        FacesContextUtils
-                .getRequiredWebApplicationContext(FacesContext.getCurrentInstance())
-                .getAutowireCapableBeanFactory().autowireBean(this);
+
         if (id == null) {
             return;
         }
@@ -39,7 +40,6 @@ public class JsfUserEditController implements Serializable{
             user = byId;
         }
     }
-
 
     public String getId() {
         return id;

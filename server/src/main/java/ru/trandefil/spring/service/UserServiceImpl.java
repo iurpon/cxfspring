@@ -31,6 +31,11 @@ public class UserServiceImpl implements UserService, UserDetailsService, Seriali
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private void test(){
+        System.out.println("===================== user service impl test autowired");
+    }
+
     @Override
     public User getLoggedUser(@NonNull final String userName, @NonNull final String password) {
         logger.info("==================================== user service impl getLoggedUser");
