@@ -7,6 +7,7 @@ import lombok.Setter;
 import ru.trandefil.spring.enums.Role;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Table(name = "users")
-public class User extends AbstractEntity {
+public class User extends AbstractEntity implements Serializable{
 
     @Column(unique = true)
     private String name;

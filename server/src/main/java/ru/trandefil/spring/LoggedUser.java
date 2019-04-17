@@ -12,6 +12,8 @@ import java.util.HashSet;
 
 public class LoggedUser implements UserDetails {
 
+    private static final long serialVersionUID = 11L;
+
     private User user;
 
     public LoggedUser(User user) {
