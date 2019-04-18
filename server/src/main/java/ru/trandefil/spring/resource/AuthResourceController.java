@@ -9,10 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.trandefil.spring.LoggedUser;
 import ru.trandefil.spring.dto.Result;
 
@@ -24,7 +21,8 @@ public class AuthResourceController {
     @Qualifier("org.springframework.security.authenticationManager")
     private AuthenticationManager authenticationManager;
 
-    @GetMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
+//    @GetMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/login", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Result login(@RequestParam("name") String name, @RequestParam("password") String password) {
         try {
             final UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(name, password);

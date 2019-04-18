@@ -27,7 +27,7 @@ public class UserRestServerController implements AbstractEntityRestController<Us
     }
 
     @Override
-    @GetMapping(value = "/users/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+//    @GetMapping(value = "/users/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public User getEntity(@PathVariable("id") String id) {
         logger.info("=========================== user rest controller get user{id}");
         return userService.getById(id);

@@ -1,5 +1,6 @@
 package ru.trandefil.spring.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import ru.trandefil.spring.enums.Role;
 import ru.trandefil.spring.model.User;
 
@@ -11,8 +12,10 @@ public class UserDTO {
 
     private String name;
 
+    @JsonIgnore
     private String password;
 
+    @JsonIgnore
     private Role role;
 
     public UserDTO() {
