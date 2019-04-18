@@ -1,4 +1,4 @@
-package ru.trandefil.spring.resource;
+package ru.trandefil.spring.feign;
 
 import ru.trandefil.spring.model.User;
 
