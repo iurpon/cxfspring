@@ -1,6 +1,6 @@
 package ru.trandefil.spring.generated;
 
-import ru.trandefil.spring.LoggedUser;
+import ru.trandefil.spring.model.LoggedUser;
 import ru.trandefil.spring.dto.Result;
 
 import javax.jws.WebMethod;

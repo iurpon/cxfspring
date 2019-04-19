@@ -10,7 +10,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-import ru.trandefil.spring.LoggedUser;
+import ru.trandefil.spring.model.LoggedUser;
 import ru.trandefil.spring.dto.Result;
 import ru.trandefil.spring.generated.AuthEndPoint;
 

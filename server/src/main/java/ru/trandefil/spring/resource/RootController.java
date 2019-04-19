@@ -2,7 +2,7 @@ package ru.trandefil.spring.resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import ru.trandefil.spring.LoggedUser;
+import ru.trandefil.spring.model.LoggedUser;
 
 import javax.servlet.http.HttpSession;
 import java.util.logging.Logger;

@@ -1,10 +1,9 @@
-package ru.trandefil.spring;
+package ru.trandefil.spring.model;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import ru.trandefil.spring.model.User;
 
 import java.util.Arrays;
 import java.util.Collection;
