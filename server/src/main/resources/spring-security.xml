@@ -22,8 +22,8 @@
     <http>
         <intercept-url pattern="/rest/login" access="isAnonymous()"/>
         <intercept-url pattern="/login" access="isAnonymous()"/>
-        <intercept-url pattern="/services/login" access="isAnonymous()"/>
-        <intercept-url pattern="/services/*" access="isAnonymous()"/>
+        <!--<intercept-url pattern="/services/login" access="isAnonymous()"/>-->
+        <intercept-url pattern="/services/**" access="isAnonymous()"/>
         <intercept-url pattern="/hello" access="permitAll"/>
         <intercept-url pattern="/**/admin/**" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/**" access="isAuthenticated()"/>

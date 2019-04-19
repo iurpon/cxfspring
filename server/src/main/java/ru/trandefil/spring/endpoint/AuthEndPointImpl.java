@@ -10,6 +10,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+import ru.trandefil.spring.dto.UserDTO;
 import ru.trandefil.spring.model.LoggedUser;
 import ru.trandefil.spring.dto.Result;
 import ru.trandefil.spring.generated.AuthEndPoint;
@@ -47,12 +48,12 @@ public class AuthEndPointImpl implements AuthEndPoint {
 
     @Override
     @WebMethod
-    public LoggedUser logged() {
+    public UserDTO logged() {
         final Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         LoggedUser loggedUser = null;
         if (principal instanceof UserDetails) loggedUser = (LoggedUser) principal;
         System.out.println("============================== logged user is null");
-        return loggedUser ;
+        return new UserDTO(loggedUser) ;
     }
 
 }

@@ -2,6 +2,7 @@ package ru.trandefil.spring.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import ru.trandefil.spring.enums.Role;
+import ru.trandefil.spring.model.LoggedUser;
 import ru.trandefil.spring.model.User;
 
 import javax.xml.bind.annotation.XmlTransient;
@@ -26,6 +27,10 @@ public class UserDTO {
         this.name = user.getName();
         this.password = user.getPassword();
         this.role = user.getRole();
+    }
+
+    public UserDTO(LoggedUser loggedUser){
+        this.name = loggedUser.getUsername();
     }
 
     public UserDTO(String id, String name, String password, Role role) {

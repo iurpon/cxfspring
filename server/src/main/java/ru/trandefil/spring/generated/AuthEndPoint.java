@@ -1,5 +1,6 @@
 package ru.trandefil.spring.generated;
 
+import ru.trandefil.spring.dto.UserDTO;
 import ru.trandefil.spring.model.LoggedUser;
 import ru.trandefil.spring.dto.Result;
 
@@ -17,6 +18,6 @@ public interface AuthEndPoint {
     Result logout();
 
     @WebMethod
-    LoggedUser logged();
+    UserDTO logged();
 
 }

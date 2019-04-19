@@ -95,11 +95,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link LoggedUser }
+     * Create an instance of {@link UserDTO }
      * 
      */
-    public LoggedUser createLoggedUser() {
-        return new LoggedUser();
+    public UserDTO createUserDTO() {
+        return new UserDTO();
     }
 
     /**
