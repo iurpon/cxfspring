@@ -60,4 +60,5 @@ public class LoggedUser implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

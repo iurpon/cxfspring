@@ -1,9 +1,5 @@
 package ru.trandefil.spring.client;
 
-import ru.trandefil.spring.generated.AuthEndPoint;
-import ru.trandefil.spring.generated.LoggedUser;
-import ru.trandefil.spring.generated.Result;
-
 import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Service;
@@ -12,7 +8,7 @@ import java.net.URL;
 
 public class AuthEndPointClient {
 
-    public static AuthEndPoint getInstance(String path) throws MalformedURLException {
+/*    public static AuthEndPoint getInstance(String path) throws MalformedURLException {
             final URL url = new URL(path);
             final String lp = "AuthEndPointImplService";
             final String ns = "http://endpoint.spring.trandefil.ru/";
@@ -27,7 +23,7 @@ public class AuthEndPointClient {
         final AuthEndPoint authEndPoint = getInstance("http://localhost:8080/services/authEndPoint?wsdl");
         Result res = authEndPoint.login("root", "root");
         System.out.println(res.isSuccess());
-/*        final LoggedUser logged = authEndPoint.logged();
-        System.out.println(logged);*/
-    }
+        final LoggedUser logged = authEndPoint.logged();
+        System.out.println(logged);
+    }*/
 }

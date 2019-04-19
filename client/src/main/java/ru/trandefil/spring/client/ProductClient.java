@@ -12,12 +12,12 @@ public class ProductClient {
 
     public static void main(String[] args) {
         try {
-            AuthEndPoint authEndPoint = new AuthEndPointImplService().getAuthEndPointImplPort();
+ /*             AuthEndPoint authEndPoint = new AuthEndPointImplService().getAuthEndPointImplPort();
             Result result = authEndPoint.login("root", "root");
             System.out.println(result);
             LoggedUser logged = authEndPoint.logged();
             System.out.println(logged);
-/*            UserEndPoint userEndPoint = new UserEndPointImplService().getUserEndPointImplPort();
+          UserEndPoint userEndPoint = new UserEndPointImplService().getUserEndPointImplPort();
             Session session = userEndPoint.getSession("root", "root");
             if (session != null) {
                 List<UserDTO> allUsers = userEndPoint.getAllUsers(session);

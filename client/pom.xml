@@ -63,11 +63,6 @@
                             <sourceRoot>${project.basedir}/src/main/java</sourceRoot>
                             <wsdlOptions>
                                 <wsdlOption>
-                                    <!-- put the wsdl file in this location -->
-                                    <!--<wsdl>${project.basedir}/src/main/resource/wsdl/ProductService.wsdl</wsdl
-                                    <extraargs>
-                                        <extraarg>-client</extraarg>
-                                    </extraargs>>-->
                                     <wsdl>http://localhost:8080/services/userEndPoint?wsdl</wsdl>
                                 </wsdlOption>
                                 <wsdlOption>
