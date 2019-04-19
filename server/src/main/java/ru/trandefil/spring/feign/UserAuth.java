@@ -1,28 +1,21 @@
 package ru.trandefil.spring.feign;
 
-import feign.Param;
-import feign.RequestLine;
-import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.trandefil.spring.dto.Result;
-import ru.trandefil.spring.dto.UserDTO;
 import ru.trandefil.spring.model.User;
 
 import java.util.List;
 
-//@FeignClient
 public interface UserAuth {
 
-//    @RequestLine("GET /login?name={username}&password={password}")
     @RequestMapping(method = RequestMethod.GET, value = "login?name={username}&password={password}")
     Result login(@PathVariable("username") String name, @PathVariable("password") String password);
 
 /*    @RequestLine("GET /users/{id}")
     UserDTO findById(@Param("id") String id);*/
 
-//    @RequestLine("GET /users")
     @RequestMapping(method = RequestMethod.GET, value = "/users")
     List<User> findAll();
 
