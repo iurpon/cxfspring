@@ -28,8 +28,6 @@ public class ObjectFactory {
     private final static QName _LoggedResponse_QNAME = new QName("http://generated.spring.trandefil.ru/", "loggedResponse");
     private final static QName _Login_QNAME = new QName("http://generated.spring.trandefil.ru/", "login");
     private final static QName _LoginResponse_QNAME = new QName("http://generated.spring.trandefil.ru/", "loginResponse");
-    private final static QName _Logout_QNAME = new QName("http://generated.spring.trandefil.ru/", "logout");
-    private final static QName _LogoutResponse_QNAME = new QName("http://generated.spring.trandefil.ru/", "logoutResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: ru.trandefil.spring.generated
@@ -68,22 +66,6 @@ public class ObjectFactory {
      */
     public LoginResponse createLoginResponse() {
         return new LoginResponse();
-    }
-
-    /**
-     * Create an instance of {@link Logout }
-     * 
-     */
-    public Logout createLogout() {
-        return new Logout();
-    }
-
-    /**
-     * Create an instance of {@link LogoutResponse }
-     * 
-     */
-    public LogoutResponse createLogoutResponse() {
-        return new LogoutResponse();
     }
 
     /**
@@ -136,24 +118,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://generated.spring.trandefil.ru/", name = "loginResponse")
     public JAXBElement<LoginResponse> createLoginResponse(LoginResponse value) {
         return new JAXBElement<LoginResponse>(_LoginResponse_QNAME, LoginResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Logout }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://generated.spring.trandefil.ru/", name = "logout")
-    public JAXBElement<Logout> createLogout(Logout value) {
-        return new JAXBElement<Logout>(_Logout_QNAME, Logout.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LogoutResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://generated.spring.trandefil.ru/", name = "logoutResponse")
-    public JAXBElement<LogoutResponse> createLogoutResponse(LogoutResponse value) {
-        return new JAXBElement<LogoutResponse>(_LogoutResponse_QNAME, LogoutResponse.class, null, value);
     }
 
 }

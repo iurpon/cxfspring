@@ -7,15 +7,14 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <http pattern="/resources/**" security="none"/>
-    <http pattern="/webjars/**" security="none"/>
-
-<!--    <http pattern="/rest/**" use-expressions="true" name="restSecurityFilterChain" create-session="stateless">
-        <http-basic/>
-        &lt;!&ndash;<intercept-url pattern="/rest/admin/**" access="hasRole('ROLE_ADMIN')"/>&ndash;&gt;
-        <intercept-url pattern="/**" access="isAuthenticated()"/>
-        <csrf disabled="true"/>
-    </http>-->
+    <!--     <http pattern="/resources/**" security="none"/>
+        <http pattern="/webjars/**" security="none"
+   <http pattern="/rest/**" use-expressions="true" name="restSecurityFilterChain" create-session="stateless">
+            <http-basic/>
+            &lt;!&ndash;<intercept-url pattern="/rest/admin/**" access="hasRole('ROLE_ADMIN')"/>&ndash;&gt;
+            <intercept-url pattern="/**" access="isAuthenticated()"/>
+            <csrf disabled="true"/>
+        </http>-->
 
     <beans:bean name="noopEncoder" class="org.springframework.security.crypto.password.NoOpPasswordEncoder"/>
 
@@ -23,7 +22,8 @@
         <intercept-url pattern="/rest/login" access="isAnonymous()"/>
         <intercept-url pattern="/login" access="isAnonymous()"/>
         <!--<intercept-url pattern="/services/login" access="isAnonymous()"/>-->
-        <intercept-url pattern="/services/**" access="isAnonymous()"/>
+        <!--<intercept-url pattern="/services/**" access="isAnonymous()"/>-->
+        <intercept-url pattern="/services/**" access="permitAll"/>
         <intercept-url pattern="/hello" access="permitAll"/>
         <intercept-url pattern="/**/admin/**" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/**" access="isAuthenticated()"/>
@@ -39,10 +39,9 @@
 
     <authentication-manager>
         <authentication-provider user-service-ref="userServiceImpl">
-           <password-encoder ref="noopEncoder"/>
+            <password-encoder ref="noopEncoder"/>
         </authentication-provider>
     </authentication-manager>
-
 
 
 </beans:beans>

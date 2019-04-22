@@ -1,5 +1,6 @@
 package ru.trandefil.spring.generated;
 
+import ru.trandefil.spring.dto.Result;
 import ru.trandefil.spring.dto.UserDTO;
 import ru.trandefil.spring.model.Session;
 
@@ -40,5 +41,11 @@ public interface UserEndPoint {
 
     @WebMethod
     Session registry(@WebParam(name = "userName") String userName, @WebParam(name = "password") String password);
+
+    @WebMethod
+    Result logout();
+
+    @WebMethod
+    UserDTO logged();
 
 }

@@ -47,6 +47,12 @@
         </property>
     </bean>
 
+    <bean id="authEndPointImpl" class="ru.trandefil.spring.endpoint.AuthEndPointImpl">
+        <property name="authenticationManager">
+            <ref bean="org.springframework.security.authenticationManager"/>
+        </property>
+    </bean>
+
     <jaxws:endpoint id="userEndPoint" implementor="#userEndPointImpl"
                     address="/userEndPoint"/>
 
@@ -56,7 +62,11 @@
     <jaxws:endpoint id="taskEndPoint" implementor="#taskEndPointImpl"
                     address="/taskEndPoint"/>
 
-    <jaxws:endpoint id="authEndPoint" implementor="ru.trandefil.spring.endpoint.AuthEndPointImpl"
+    <jaxws:endpoint id="authEndPoint" implementor="#authEndPointImpl"
                     address="/authEndPoint"/>
+
+
+<!--    <jaxws:endpoint id="authEndPoint" implementor="ru.trandefil.spring.endpoint.AuthEndPointImpl"
+                    address="/authEndPoint"/>-->
 
 </beans>

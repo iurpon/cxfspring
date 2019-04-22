@@ -2,11 +2,15 @@ package ru.trandefil.spring.endpoint;
 
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import ru.trandefil.spring.dto.Result;
 import ru.trandefil.spring.dto.UserDTO;
 import ru.trandefil.spring.enums.Role;
 import ru.trandefil.spring.exception.SecurityAuthentificationException;
 import ru.trandefil.spring.exception.SecurityAuthorizationException;
 import ru.trandefil.spring.generated.UserEndPoint;
+import ru.trandefil.spring.model.LoggedUser;
 import ru.trandefil.spring.model.Session;
 import ru.trandefil.spring.model.User;
 import ru.trandefil.spring.service.UserService;
@@ -150,6 +154,27 @@ public class UserEndPointImpl implements UserEndPoint {
     private User fromDTO(@NonNull UserDTO dto) {
         final User user = new User(dto.getId(), dto.getName(), dto.getPassword(), dto.getRole());
         return user;
+    }
+
+    @Override
+    @WebMethod
+    public Result logout() {
+        SecurityContextHolder.getContext().setAuthentication(null);
+        return new Result(false);
+    }
+
+    @Override
+    @WebMethod
+    public UserDTO logged() {
+        logger.info("======================== authendpoint logged()");
+        final Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        LoggedUser loggedUser = null;
+        if (principal instanceof UserDetails){
+            logger.info("========================== principal instance of UserDetails");
+            loggedUser = (LoggedUser) principal;
+        }
+        logger.info("============================== logged user is null ? " + loggedUser + "  , principal ? " + principal);
+        return loggedUser == null ? new UserDTO() : new UserDTO(loggedUser);
     }
 
 }
