@@ -17,10 +17,13 @@ import ru.trandefil.spring.generated.AuthEndPoint;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
+import java.util.logging.Logger;
 
 @Component
 @WebService(endpointInterface = "ru.trandefil.spring.generated.AuthEndPoint")
 public class AuthEndPointImpl implements AuthEndPoint {
+
+    private Logger logger = Logger.getLogger(this.getClass().getName());
 
     @Autowired
     @Qualifier("org.springframework.security.authenticationManager")
@@ -49,6 +52,7 @@ public class AuthEndPointImpl implements AuthEndPoint {
     @Override
     @WebMethod
     public UserDTO logged() {
+        logger.info("======================== authendpoint logged()");
         final Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         LoggedUser loggedUser = null;
         if (principal instanceof UserDetails) loggedUser = (LoggedUser) principal;
