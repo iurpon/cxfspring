@@ -45,7 +45,5 @@ public interface UserEndPoint {
     @WebMethod
     Result logout();
 
-    @WebMethod
-    UserDTO logged();
 
 }

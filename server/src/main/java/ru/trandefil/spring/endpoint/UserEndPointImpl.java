@@ -163,18 +163,4 @@ public class UserEndPointImpl implements UserEndPoint {
         return new Result(false);
     }
 
-    @Override
-    @WebMethod
-    public UserDTO logged() {
-        logger.info("======================== authendpoint logged()");
-        final Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        LoggedUser loggedUser = null;
-        if (principal instanceof UserDetails){
-            logger.info("========================== principal instance of UserDetails");
-            loggedUser = (LoggedUser) principal;
-        }
-        logger.info("============================== logged user is null ? " + loggedUser + "  , principal ? " + principal);
-        return loggedUser == null ? new UserDTO() : new UserDTO(loggedUser);
-    }
-
 }
