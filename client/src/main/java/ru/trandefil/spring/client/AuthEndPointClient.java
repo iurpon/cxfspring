@@ -13,6 +13,8 @@ import java.util.*;
 
 public class AuthEndPointClient {
 
+    public static List<String> cookieValue;
+
     public static AuthEndPoint getAuthEndPoint() throws MalformedURLException {
         final AuthEndPoint result = new AuthEndPointImplService().getAuthEndPointImplPort();
         final BindingProvider bindingProvider = (BindingProvider) result;
@@ -20,13 +22,22 @@ public class AuthEndPointClient {
         return result;
     }
 
-    public static UserEndPoint getUserEndPoint(BindingProvider previusProvider) throws MalformedURLException {
+    @SuppressWarnings("unchecked")
+    public static UserEndPoint getUserEndPoint() throws MalformedURLException {
         final UserEndPoint result = new UserEndPointImplService().getUserEndPointImplPort();
-        Map<String, List<String>> incoming =
-                (Map<String, List<String>>) previusProvider.getRequestContext().get(MessageContext.HTTP_REQUEST_HEADERS);
         final BindingProvider bindingProvider = (BindingProvider) result;
+        if(cookieValue != null){
+            Map<String, List<String>> headers =
+                    (Map<String, List<String>>) bindingProvider.getRequestContext()
+                            .get(MessageContext.HTTP_REQUEST_HEADERS);
+            if(headers == null){
+                headers = new HashMap<>();
+                bindingProvider.getRequestContext().put(MessageContext.HTTP_REQUEST_HEADERS,headers);
+            }
+            headers.put("Cookie", cookieValue);
+            bindingProvider.getRequestContext().put(MessageContext.HTTP_REQUEST_HEADERS, headers);
+        }
         bindingProvider.getRequestContext().put(BindingProvider.SESSION_MAINTAIN_PROPERTY, true);
-        bindingProvider.getRequestContext().put(MessageContext.HTTP_REQUEST_HEADERS,incoming);
         return result;
     }
 
@@ -34,11 +45,15 @@ public class AuthEndPointClient {
     public static void checkCookie(BindingProvider bindingProvider) {
         Map<String, List<String>> headers1 =
                 (Map<String, List<String>>) bindingProvider.getRequestContext().get(MessageContext.HTTP_REQUEST_HEADERS);
-        System.out.println("request context : " + headers1);
-
+//        System.out.println("request context : " + headers1);
         Map<String, List<String>> headers =
                 (Map<String, List<String>>) bindingProvider.getResponseContext().get(MessageContext.HTTP_RESPONSE_HEADERS);
-        System.out.println("respronse context : " + headers);
+//        System.out.println("respronse context : " + headers);
+
+        if(cookieValue == null){
+            cookieValue = headers.get("Set-Cookie");
+            System.out.println(cookieValue);
+        }
  /*         bindingProvider.getRequestContext().put(MessageContext.HTTP_REQUEST_HEADERS,headers);
       if (headers == null) {
             System.out.println("headers is null");
@@ -72,7 +87,9 @@ public class AuthEndPointClient {
         System.out.println(authEndPoint.logged().getName());
         checkCookie((BindingProvider)authEndPoint);
         System.out.println(authEndPoint.logged().getName());
-
+        UserEndPoint userEndPoint = getUserEndPoint();
+        System.out.println("Logged ? " + userEndPoint.logout().isSuccess());
+        System.out.println(authEndPoint.logged().getName());
 
     }
 

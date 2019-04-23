@@ -159,6 +159,14 @@ public class UserEndPointImpl implements UserEndPoint {
     @Override
     @WebMethod
     public Result logout() {
+        logger.info("======================== authendpoint logged()");
+        final Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        LoggedUser loggedUser = null;
+        if (principal instanceof UserDetails){
+            logger.info("========================== principal instance of UserDetails");
+            loggedUser = (LoggedUser) principal;
+        }
+        logger.info("============================== logged user is null ? " + loggedUser + "  , principal ? " + principal);
         SecurityContextHolder.getContext().setAuthentication(null);
         return new Result(false);
     }
