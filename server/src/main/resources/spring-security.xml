@@ -21,8 +21,7 @@
     <http>
         <intercept-url pattern="/rest/login" access="isAnonymous()"/>
         <intercept-url pattern="/login" access="isAnonymous()"/>
-        <!--<intercept-url pattern="/services/authEndPoint" access="isAnonymous()"/>-->
-
+        <intercept-url pattern="/services/authEndPoint" access="isAnonymous()"/>
         <intercept-url pattern="/services/**" method="POST" access="isAuthenticated()" />
         <intercept-url pattern="/services/**" method="GET" access="isAnonymous()" />
         <intercept-url pattern="/hello" access="permitAll"/>

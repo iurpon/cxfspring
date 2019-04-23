@@ -81,15 +81,16 @@ public class AuthEndPointClient {
     public static void main(String[] args) throws MalformedURLException {
         AuthEndPoint authEndPoint = getAuthEndPoint();
         System.out.println(authEndPoint.login("root","root").isSuccess());
+       checkCookie((BindingProvider)authEndPoint);
+/*         System.out.println(authEndPoint.logged().getName());
         checkCookie((BindingProvider)authEndPoint);
         System.out.println(authEndPoint.logged().getName());
         checkCookie((BindingProvider)authEndPoint);
-        System.out.println(authEndPoint.logged().getName());
-        checkCookie((BindingProvider)authEndPoint);
-        System.out.println(authEndPoint.logged().getName());
+        System.out.println(authEndPoint.logged().getName());*/
         UserEndPoint userEndPoint = getUserEndPoint();
         System.out.println("Logged ? " + userEndPoint.logout().isSuccess());
-        System.out.println(authEndPoint.logged().getName());
+
+//        System.out.println(authEndPoint.logged().getName());
 
     }
 
