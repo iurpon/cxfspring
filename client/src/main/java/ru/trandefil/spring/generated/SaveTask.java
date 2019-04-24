@@ -25,7 +25,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="end" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="projectId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="executorId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="session" type="{http://generated.spring.trandefil.ru/}session" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -42,8 +41,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "start",
     "end",
     "projectId",
-    "executorId",
-    "session"
+    "executorId"
 })
 public class SaveTask {
 
@@ -56,7 +54,6 @@ public class SaveTask {
     protected XMLGregorianCalendar end;
     protected String projectId;
     protected String executorId;
-    protected Session session;
 
     /**
      * Gets the value of the id property.
@@ -224,30 +221,6 @@ public class SaveTask {
      */
     public void setExecutorId(String value) {
         this.executorId = value;
-    }
-
-    /**
-     * Gets the value of the session property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Session }
-     *     
-     */
-    public Session getSession() {
-        return session;
-    }
-
-    /**
-     * Sets the value of the session property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Session }
-     *     
-     */
-    public void setSession(Session value) {
-        this.session = value;
     }
 
 }
