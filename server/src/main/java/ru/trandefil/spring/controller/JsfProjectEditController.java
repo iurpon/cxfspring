@@ -31,9 +31,9 @@ public class JsfProjectEditController  extends SpringBeanAutowiringSupport imple
 
     private final transient Logger logger = Logger.getLogger(this.getClass().getName());
 
-    private String id;
+    private transient String id;
 
-    private Project project = new Project();
+    private transient Project project = new Project();
 
     public void init() {
         logger.info("=============== jsfProjectEditController init with id = " + id);
