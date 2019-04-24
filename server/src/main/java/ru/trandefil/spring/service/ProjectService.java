@@ -19,7 +19,7 @@ public interface ProjectService {
 
     Project getByName(String name);
 
-    Project saveNew(String name, String description, Session session);
+    Project saveNew(String name, String description, String userId);
 
     Project update(Project fromDTO);
 

@@ -4,6 +4,7 @@ import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 import ru.trandefil.spring.model.*;
 import ru.trandefil.spring.service.ProjectService;
 import ru.trandefil.spring.service.TaskService;
@@ -23,31 +24,21 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
+@Component
 @WebService(endpointInterface = "ru.trandefil.spring.generated.TaskEndPoint")
 public class TaskEndPointImpl implements TaskEndPoint {
 
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
+    @Autowired
     private TaskService taskService;
 
+    @Autowired
     private ProjectService projectService;
 
+    @Autowired
     private UserService userService;
 
-    @Autowired
-    public void setTaskService(TaskService taskService) {
-        this.taskService = taskService;
-    }
-
-    @Autowired
-    public void setProjectService(ProjectService projectService) {
-        this.projectService = projectService;
-    }
-
-    @Autowired
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
 
     @WebMethod
     @Override

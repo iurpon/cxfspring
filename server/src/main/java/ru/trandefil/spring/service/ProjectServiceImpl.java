@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.trandefil.spring.exception.BadUserIdException;
 import ru.trandefil.spring.model.Project;
-import ru.trandefil.spring.model.Session;
 import ru.trandefil.spring.model.User;
 import ru.trandefil.spring.repository.ProjectRepository;
 import ru.trandefil.spring.repository.UserRepository;
@@ -29,12 +28,12 @@ public class ProjectServiceImpl implements ProjectService {
     private UserRepository userRepository;
 
     @PostConstruct
-    public void testContruct(){
+    public void testContruct() {
         System.out.println("=============================PostConstruct test()");
     }
 
     @Autowired
-    public void test(){
+    public void test() {
         System.out.println("=============================AUTOWIRED test()");
     }
 
@@ -80,9 +79,9 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Project saveNew(String name, String description, Session session) {
-        final User user = userRepository.findById(session.getUserId()).orElse(null);
-        final Project project = new Project(UUIDUtil.getUniqueString(),name,description,user);
+    public Project saveNew(@NonNull final String name, @NonNull final String description, @NonNull final String userId) {
+        final User user = userRepository.findById(userId).orElse(null);
+        final Project project = new Project(UUIDUtil.getUniqueString(), name, description, user);
         return projectRepository.save(project);
     }
 
@@ -100,7 +99,7 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     @Transactional
     public Project update(Project project, String id) {
-        if(!project.getId().equals(id)){
+        if (!project.getId().equals(id)) {
             throw new BadUserIdException("project bad id");
         }
         return projectRepository.save(project);

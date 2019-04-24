@@ -2,6 +2,7 @@ package ru.trandefil.spring.endpoint;
 
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -22,7 +23,8 @@ public class AuthEndPointImpl implements AuthEndPoint {
 
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
-
+    @Autowired
+    @Qualifier("org.springframework.security.authenticationManager")
     private AuthenticationManager authenticationManager;
 
     @Autowired

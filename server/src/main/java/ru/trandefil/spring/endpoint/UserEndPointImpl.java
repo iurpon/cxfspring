@@ -4,6 +4,7 @@ import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 import ru.trandefil.spring.dto.Result;
 import ru.trandefil.spring.dto.UserDTO;
 import ru.trandefil.spring.enums.Role;
@@ -22,20 +23,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+@Component
 @WebService(endpointInterface = "ru.trandefil.spring.generated.UserEndPoint")
 public class UserEndPointImpl implements UserEndPoint {
 
-
-    private UserService userService;
-
-    public UserService getUserService() {
-        return userService;
-    }
-
     @Autowired
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
+    private UserService userService;
 
     private final Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -71,13 +64,6 @@ public class UserEndPointImpl implements UserEndPoint {
 
     @Override
     @WebMethod
-    public Session getSession(@NonNull final String userName, @NonNull final String password) {
-        logger.info("---------------------------------------- getSession");
-        return userService.getSession(userName, password);
-    }
-
-    @Override
-    @WebMethod
     public void userLogout() {
 
     }
@@ -99,9 +85,8 @@ public class UserEndPointImpl implements UserEndPoint {
         logger.info("================================ user endpoint registry");
         final User user = userService.constractUser(userName, password, "user");
         logger.info("=====================================created user " + user);
-        final Session session = getSession(userName, password);
-        logger.info("===================================== created Session " + session);
-        return session;
+        logger.info("===================================== created Session " );
+        return null;
     }
 
     private UserDTO getDTO(@NonNull User user) {
