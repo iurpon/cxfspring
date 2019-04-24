@@ -40,7 +40,7 @@ public class AuthEndPointImpl implements AuthEndPoint {
 
             final Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             LoggedUser loggedUser = null;
-            if (principal instanceof UserDetails){
+            if (principal instanceof UserDetails) {
                 logger.info("========================== principal instance of UserDetails");
                 loggedUser = (LoggedUser) principal;
             }
@@ -57,7 +57,7 @@ public class AuthEndPointImpl implements AuthEndPoint {
         logger.info("======================== authendpoint logged()");
         final Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         LoggedUser loggedUser = null;
-        if (principal instanceof UserDetails){
+        if (principal instanceof UserDetails) {
             logger.info("========================== principal instance of UserDetails");
             loggedUser = (LoggedUser) principal;
         }
