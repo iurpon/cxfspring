@@ -7,15 +7,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import ru.trandefil.spring.dto.Result;
 import ru.trandefil.spring.dto.UserDTO;
-import ru.trandefil.spring.enums.Role;
-import ru.trandefil.spring.exception.SecurityAuthentificationException;
-import ru.trandefil.spring.exception.SecurityAuthorizationException;
 import ru.trandefil.spring.generated.UserEndPoint;
 import ru.trandefil.spring.model.LoggedUser;
 import ru.trandefil.spring.model.Session;
 import ru.trandefil.spring.model.User;
 import ru.trandefil.spring.service.UserService;
-import ru.trandefil.spring.util.SignatureUtil;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -85,7 +81,7 @@ public class UserEndPointImpl implements UserEndPoint {
         logger.info("================================ user endpoint registry");
         final User user = userService.constractUser(userName, password, "user");
         logger.info("=====================================created user " + user);
-        logger.info("===================================== created Session " );
+        logger.info("===================================== created Session ");
         return null;
     }
 
@@ -111,7 +107,7 @@ public class UserEndPointImpl implements UserEndPoint {
         logger.info("======================== authendpoint logged()");
         final Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         LoggedUser loggedUser = null;
-        if (principal instanceof UserDetails){
+        if (principal instanceof UserDetails) {
             logger.info("========================== principal instance of UserDetails");
             loggedUser = (LoggedUser) principal;
         }

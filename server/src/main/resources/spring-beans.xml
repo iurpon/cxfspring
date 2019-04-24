@@ -9,64 +9,24 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <import resource="classpath:META-INF/cxf/cxf.xml"/>
     <import resource="classpath:applicationContext-persistence.xml"/>
     <import resource="classpath:spring-security.xml"/>
-    <!--<import resource="classpath:session.xml"/>-->
 
     <context:component-scan base-package="ru.trandefil.spring.service"/>
     <context:component-scan base-package="ru.trandefil.spring.endpoint"/>
     <context:component-scan base-package="ru.trandefil.spring.controller"/>
 
-    <!--<mvc:annotation-driven />-->
 
-    <bean id="userEndPointImpl" class="ru.trandefil.spring.endpoint.UserEndPointImpl">
-        <property name="userService">
-            <ref bean="userServiceImpl"/>
-        </property>
-    </bean>
-
-    <bean id="projectEndPointImpl" class="ru.trandefil.spring.endpoint.ProjectEndPointImpl">
-        <property name="userService">
-            <ref bean="userServiceImpl"/>
-        </property>
-        <property name="projectService">
-            <ref bean="projectServiceImpl"/>
-        </property>
-    </bean>
-
-    <bean id="taskEndPointImpl" class="ru.trandefil.spring.endpoint.TaskEndPointImpl">
-        <property name="userService">
-            <ref bean="userServiceImpl"/>
-        </property>
-        <property name="projectService">
-            <ref bean="projectServiceImpl"/>
-        </property>
-        <property name="taskService">
-            <ref bean="taskServiceImpl"/>
-        </property>
-    </bean>
-
-    <bean id="authEndPointImpl" class="ru.trandefil.spring.endpoint.AuthEndPointImpl">
-        <property name="authenticationManager">
-            <ref bean="org.springframework.security.authenticationManager"/>
-        </property>
-    </bean>
-
-    <jaxws:endpoint id="userEndPoint" implementor="#userEndPointImpl"
+    <jaxws:endpoint id="userEndPoint" implementor="ru.trandefil.spring.endpoint.UserEndPointImpl"
                     address="/userEndPoint"/>
 
-    <jaxws:endpoint id="projectEndPoint" implementor="#projectEndPointImpl"
+    <jaxws:endpoint id="projectEndPoint" implementor="ru.trandefil.spring.endpoint.ProjectEndPointImpl"
                     address="/projectEndPoint"/>
 
-    <jaxws:endpoint id="taskEndPoint" implementor="#taskEndPointImpl"
+    <jaxws:endpoint id="taskEndPoint" implementor="ru.trandefil.spring.endpoint.TaskEndPointImpl"
                     address="/taskEndPoint"/>
 
-    <jaxws:endpoint id="authEndPoint" implementor="#authEndPointImpl"
+    <jaxws:endpoint id="authEndPoint" implementor="ru.trandefil.spring.endpoint.AuthEndPointImpl"
                     address="/authEndPoint"/>
-
-
-<!--    <jaxws:endpoint id="authEndPoint" implementor="ru.trandefil.spring.endpoint.AuthEndPointImpl"
-                    address="/authEndPoint"/>-->
 
 </beans>

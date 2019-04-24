@@ -5,20 +5,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-import ru.trandefil.spring.model.*;
+import ru.trandefil.spring.dto.TaskDTO;
+import ru.trandefil.spring.generated.TaskEndPoint;
+import ru.trandefil.spring.model.LoggedUser;
+import ru.trandefil.spring.model.Project;
+import ru.trandefil.spring.model.Task;
+import ru.trandefil.spring.model.User;
 import ru.trandefil.spring.service.ProjectService;
 import ru.trandefil.spring.service.TaskService;
 import ru.trandefil.spring.service.UserService;
-import ru.trandefil.spring.dto.TaskDTO;
-import ru.trandefil.spring.exception.SecurityAuthentificationException;
-import ru.trandefil.spring.generated.TaskEndPoint;
-import ru.trandefil.spring.util.SignatureUtil;
-import sun.rmi.runtime.Log;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -55,7 +54,7 @@ public class TaskEndPointImpl implements TaskEndPoint {
     public TaskDTO updateTask(@NonNull final TaskDTO taskDTO) {
         logger.info("taskendpoint updateTask");
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if(!(principal instanceof UserDetails)) return null;
+        if (!(principal instanceof UserDetails)) return null;
         String principalId = ((LoggedUser) principal).getId();
         final Task task = getTaskEntity(taskDTO, principalId);
 //        final Task updated = taskService.save(session.getUserId(), task);
@@ -107,7 +106,7 @@ public class TaskEndPointImpl implements TaskEndPoint {
     public TaskDTO getTaskByName(@NonNull String name) {
         logger.info("taskendpoint getByName");
 
-        Task task = taskService.getByName( name);
+        Task task = taskService.getByName(name);
 //        Task task = taskService.getByName(session.getUserId(), name);
         logger.info("returning " + task);
         return getTaskDTO(task);
