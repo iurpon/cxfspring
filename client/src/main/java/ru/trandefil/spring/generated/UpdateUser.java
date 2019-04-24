@@ -18,7 +18,6 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence&gt;
  *         &lt;element name="user" type="{http://generated.spring.trandefil.ru/}userDTO" minOccurs="0"/&gt;
  *         &lt;element name="pass" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="session" type="{http://generated.spring.trandefil.ru/}session" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -30,14 +29,12 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "updateUser", propOrder = {
     "user",
-    "pass",
-    "session"
+    "pass"
 })
 public class UpdateUser {
 
     protected UserDTO user;
     protected String pass;
-    protected Session session;
 
     /**
      * Gets the value of the user property.
@@ -85,30 +82,6 @@ public class UpdateUser {
      */
     public void setPass(String value) {
         this.pass = value;
-    }
-
-    /**
-     * Gets the value of the session property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Session }
-     *     
-     */
-    public Session getSession() {
-        return session;
-    }
-
-    /**
-     * Sets the value of the session property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Session }
-     *     
-     */
-    public void setSession(Session value) {
-        this.session = value;
     }
 
 }

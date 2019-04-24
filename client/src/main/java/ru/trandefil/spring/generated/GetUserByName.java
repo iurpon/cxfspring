@@ -17,7 +17,6 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="session" type="{http://generated.spring.trandefil.ru/}session" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -28,13 +27,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "getUserByName", propOrder = {
-    "name",
-    "session"
+    "name"
 })
 public class GetUserByName {
 
     protected String name;
-    protected Session session;
 
     /**
      * Gets the value of the name property.
@@ -58,30 +55,6 @@ public class GetUserByName {
      */
     public void setName(String value) {
         this.name = value;
-    }
-
-    /**
-     * Gets the value of the session property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Session }
-     *     
-     */
-    public Session getSession() {
-        return session;
-    }
-
-    /**
-     * Sets the value of the session property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Session }
-     *     
-     */
-    public void setSession(Session value) {
-        this.session = value;
     }
 
 }

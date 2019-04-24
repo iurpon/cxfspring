@@ -19,7 +19,6 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="pass" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="role" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="arg3" type="{http://generated.spring.trandefil.ru/}session" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -32,15 +31,13 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "saveUser", propOrder = {
     "name",
     "pass",
-    "role",
-    "arg3"
+    "role"
 })
 public class SaveUser {
 
     protected String name;
     protected String pass;
     protected String role;
-    protected Session arg3;
 
     /**
      * Gets the value of the name property.
@@ -112,30 +109,6 @@ public class SaveUser {
      */
     public void setRole(String value) {
         this.role = value;
-    }
-
-    /**
-     * Gets the value of the arg3 property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Session }
-     *     
-     */
-    public Session getArg3() {
-        return arg3;
-    }
-
-    /**
-     * Sets the value of the arg3 property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Session }
-     *     
-     */
-    public void setArg3(Session value) {
-        this.arg3 = value;
     }
 
 }
