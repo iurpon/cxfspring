@@ -13,28 +13,26 @@ import java.util.List;
 public interface UserEndPoint {
 
     @WebMethod
-    boolean deleteUserByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);
+    boolean deleteUserByName(@WebParam(name = "name") String name);
 
     @WebMethod
     UserDTO updateUser(
             @WebParam(name = "user") UserDTO user,
-            @WebParam(name = "pass") String pass,
-            @WebParam(name = "session") Session session);
+            @WebParam(name = "pass") String pass);
 
     @WebMethod
     UserDTO saveUser(@WebParam(name = "name") String name,
                      @WebParam(name = "pass") String pass,
-                     @WebParam(name = "role") String role,
-                     @WebParam Session session);
+                     @WebParam(name = "role") String role);
 
     @WebMethod
-    UserDTO getUserByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);
+    UserDTO getUserByName(@WebParam(name = "name") String name);
 
     @WebMethod
-    List<UserDTO> getAllUsers(@WebParam(name = "session") Session session);
+    List<UserDTO> getAllUsers();
 
     @WebMethod
-    void userLogout(@WebParam(name = "session") Session session);
+    void userLogout();
 
     @WebMethod
     Session getSession(@WebParam(name = "userName") String userName, @WebParam(name = "password") String password);

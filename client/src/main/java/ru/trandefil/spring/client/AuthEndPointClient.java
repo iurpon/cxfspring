@@ -93,5 +93,4 @@ public class AuthEndPointClient {
 //        System.out.println(authEndPoint.logged().getName());
 
     }
-
 }

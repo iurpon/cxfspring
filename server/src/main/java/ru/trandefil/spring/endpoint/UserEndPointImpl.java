@@ -41,40 +41,20 @@ public class UserEndPointImpl implements UserEndPoint {
 
     @Override
     @WebMethod
-    public boolean deleteUserByName(@NonNull String name, @NonNull Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            throw new SecurityAuthentificationException("security authentification exception.");
-        }
-        if (!session.getRole().equals(Role.ADMIN)) {
-            System.out.println("not authorized  to delete user.");
-            throw new SecurityAuthorizationException("no permitting for execution.");
-        }
+    public boolean deleteUserByName(@NonNull String name) {
         return userService.deleteByName(name);
     }
 
     @Override
     @WebMethod
-    public UserDTO saveUser(@NonNull String name, @NonNull String pass, @NonNull String role, @NonNull Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            throw new SecurityAuthentificationException("security authentification exception.");
-        }
-        if (!session.getRole().equals(Role.ADMIN)) {
-            System.out.println("not authorized  to create new user.");
-            throw new SecurityAuthorizationException("no permitting for execution.");
-        }
+    public UserDTO saveUser(@NonNull String name, @NonNull String pass, @NonNull String role) {
         final User user = userService.constractUser(name, pass, role);
         return getDTO(user);
     }
 
     @Override
     @WebMethod
-    public UserDTO getUserByName(@NonNull String userName, @NonNull Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            throw new SecurityAuthentificationException("security authentification exception.");
-        }
+    public UserDTO getUserByName(@NonNull String userName) {
         final User user = userService.getByName(userName);
         if (user == null) {
             return null;
@@ -84,11 +64,7 @@ public class UserEndPointImpl implements UserEndPoint {
 
     @Override
     @WebMethod
-    public List<UserDTO> getAllUsers(@NonNull Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            throw new SecurityAuthentificationException("security authentification exception.");
-        }
+    public List<UserDTO> getAllUsers() {
         final List<User> users = userService.getAll();
         return getDTOList(users);
     }
@@ -102,25 +78,13 @@ public class UserEndPointImpl implements UserEndPoint {
 
     @Override
     @WebMethod
-    public void userLogout(@NonNull Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            throw new SecurityAuthentificationException("security authentification exception.");
-        }
-        userService.logout(session);
+    public void userLogout() {
+
     }
 
     @Override
     @WebMethod
-    public UserDTO updateUser(@NonNull UserDTO userDTO, @NonNull String pass, @NonNull Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            throw new SecurityAuthentificationException("security authentification exception.");
-        }
-        if (!session.getRole().equals(Role.ADMIN) && !userDTO.getId().equals(session.getUserId())) {
-            System.out.println("not authorized  to update this user.");
-            throw new SecurityAuthorizationException("no permitting for execution.");
-        }
+    public UserDTO updateUser(@NonNull UserDTO userDTO, @NonNull String pass) {
         if (pass.isEmpty()) {
             final User user = userService.getById(userDTO.getId());
             pass = user.getPassword();
