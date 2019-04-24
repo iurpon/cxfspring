@@ -1,17 +1,18 @@
 package ru.trandefil.spring.feign;
 
 import feign.Param;
-import feign.RequestLine;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import ru.trandefil.spring.model.User;
 
 import java.util.List;
 
 public interface UserClient {
 
-    @RequestLine("GET /{id}")
+    @RequestMapping(method = RequestMethod.GET, value = "/users/id")
     User findById(@Param("id") String id);
 
-    @RequestLine("GET")
+    @RequestMapping(method = RequestMethod.GET, value = "/users")
     List<User> findAll();
 
 }

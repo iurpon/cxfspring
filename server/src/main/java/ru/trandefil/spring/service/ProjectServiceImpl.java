@@ -79,9 +79,11 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Project saveNew(@NonNull final String name, @NonNull final String description, @NonNull final String userId) {
-        final User user = userRepository.findById(userId).orElse(null);
+    @Transactional
+    public Project saveNew(@NonNull final String name, @NonNull final String description, @NonNull final User user) {
+        logger.info("=============================== project service save new ");
         final Project project = new Project(UUIDUtil.getUniqueString(), name, description, user);
+        logger.info("================================saving project : " + project);
         return projectRepository.save(project);
     }
 

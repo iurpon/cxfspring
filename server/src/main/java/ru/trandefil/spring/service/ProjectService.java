@@ -2,6 +2,7 @@ package ru.trandefil.spring.service;
 
 import ru.trandefil.spring.model.Project;
 import ru.trandefil.spring.model.Session;
+import ru.trandefil.spring.model.User;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public interface ProjectService {
 
     Project getByName(String name);
 
-    Project saveNew(String name, String description, String userId);
+    Project saveNew(String name, String description, User user);
 
     Project update(Project fromDTO);
 

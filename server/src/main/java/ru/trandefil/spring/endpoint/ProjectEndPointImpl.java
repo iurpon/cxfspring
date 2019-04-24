@@ -12,7 +12,6 @@ import ru.trandefil.spring.service.ProjectService;
 import ru.trandefil.spring.service.UserService;
 
 import javax.jws.WebService;
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -29,16 +28,12 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
     @Autowired
     private UserService userService;
 
-    @Autowired(required = false)
-    private Principal principal;
-
     @Override
     public ProjectDTO saveProject(@NonNull final String name, @NonNull final String description) {
-        if (principal != null) {
-            final Project saved = projectService.saveNew(name, description, ((LoggedUser) principal).getId());
-            return getDTOproject(saved);
-        }
-        return null;
+        User user = new User(LoggedUser.getLoggedUser());
+        logger.info("========================saving project for user  : " + user);
+        final Project saved = projectService.saveNew(name, description, user);
+        return getDTOproject(saved);
     }
 
     @Override
