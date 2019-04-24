@@ -2,21 +2,22 @@ package ru.trandefil.spring.endpoint;
 
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import ru.trandefil.spring.model.*;
 import ru.trandefil.spring.service.ProjectService;
 import ru.trandefil.spring.service.TaskService;
 import ru.trandefil.spring.service.UserService;
 import ru.trandefil.spring.dto.TaskDTO;
 import ru.trandefil.spring.exception.SecurityAuthentificationException;
 import ru.trandefil.spring.generated.TaskEndPoint;
-import ru.trandefil.spring.model.Project;
-import ru.trandefil.spring.model.Session;
-import ru.trandefil.spring.model.Task;
-import ru.trandefil.spring.model.User;
 import ru.trandefil.spring.util.SignatureUtil;
+import sun.rmi.runtime.Log;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -50,12 +51,8 @@ public class TaskEndPointImpl implements TaskEndPoint {
 
     @WebMethod
     @Override
-    public List<TaskDTO> getAllTasks(@NonNull Session session) {
+    public List<TaskDTO> getAllTasks() {
         logger.info("taskendpoint getAllTasks");
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            return null;
-        }
 //        List<Task> tasks = taskService.getAll(session.getUserId());
         List<Task> tasks = taskService.getAll();
         logger.info("returning :" + tasks);
@@ -64,13 +61,12 @@ public class TaskEndPointImpl implements TaskEndPoint {
 
     @WebMethod
     @Override
-    public TaskDTO updateTask(@NonNull final TaskDTO taskDTO, @NonNull final Session session) {
+    public TaskDTO updateTask(@NonNull final TaskDTO taskDTO) {
         logger.info("taskendpoint updateTask");
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            throw new SecurityAuthentificationException("auth exc.");
-        }
-        final Task task = getTaskEntity(taskDTO, session.getUserId());
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(!(principal instanceof UserDetails)) return null;
+        String principalId = ((LoggedUser) principal).getId();
+        final Task task = getTaskEntity(taskDTO, principalId);
 //        final Task updated = taskService.save(session.getUserId(), task);
         final Task updated = taskService.save(task);
         final TaskDTO dto = getTaskDTO(updated);
@@ -87,8 +83,7 @@ public class TaskEndPointImpl implements TaskEndPoint {
             @WebParam(name = "start") Date start,
             @WebParam(name = "end") Date end,
             @WebParam(name = "projectId") @NonNull String projectId,
-            @WebParam(name = "executorId") @NonNull String executorId,
-            @WebParam(name = "session") @NonNull Session session
+            @WebParam(name = "executorId") @NonNull String executorId
     ) {
 /*        logger.info("taskendpoint saveTask ");
         if (!SignatureUtil.checkCorrectSession(session)) {
@@ -107,12 +102,9 @@ public class TaskEndPointImpl implements TaskEndPoint {
 
     @WebMethod
     @Override
-    public boolean deleteTaskByName(@NonNull String name, @NonNull Session session) {
+    public boolean deleteTaskByName(@NonNull String name) {
         logger.info("taskendpoint deleteByName");
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            throw new SecurityAuthentificationException("security authentification exception.");
-        }
+
 //        boolean isDeleted = taskService.deleteByName(session.getUserId(), name);
         boolean isDeleted = taskService.deleteByName(name);
         logger.info("deleted ? " + isDeleted);
@@ -121,12 +113,9 @@ public class TaskEndPointImpl implements TaskEndPoint {
 
     @WebMethod
     @Override
-    public TaskDTO getTaskByName(@NonNull String name, @NonNull Session session) {
+    public TaskDTO getTaskByName(@NonNull String name) {
         logger.info("taskendpoint getByName");
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            throw new SecurityAuthentificationException("security authentification exception.");
-        }
+
         Task task = taskService.getByName( name);
 //        Task task = taskService.getByName(session.getUserId(), name);
         logger.info("returning " + task);

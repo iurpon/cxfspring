@@ -35,9 +35,6 @@ public interface UserEndPoint {
     void userLogout();
 
     @WebMethod
-    Session getSession(@WebParam(name = "userName") String userName, @WebParam(name = "password") String password);
-
-    @WebMethod
     Session registry(@WebParam(name = "userName") String userName, @WebParam(name = "password") String password);
 
     @WebMethod

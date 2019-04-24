@@ -61,4 +61,8 @@ public class LoggedUser implements UserDetails {
         return true;
     }
 
+    public String getId(){
+        return user == null ? null : user.getId();
+    }
+
 }

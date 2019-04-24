@@ -13,7 +13,7 @@ import java.util.List;
 public interface TaskEndPoint {
 
     @WebMethod
-    List<TaskDTO> getAllTasks(@WebParam(name = "session") Session session);
+    List<TaskDTO> getAllTasks();
 
     @WebMethod
     TaskDTO saveTask(
@@ -23,16 +23,16 @@ public interface TaskEndPoint {
             @WebParam(name = "start") Date start,
             @WebParam(name = "end") Date end,
             @WebParam(name = "projectId") String projectId,
-            @WebParam(name = "executorId") String executorId,
-            @WebParam(name = "session") Session session);
+            @WebParam(name = "executorId") String executorId
+    );
 
     @WebMethod
-    TaskDTO updateTask(@WebParam(name = "task") TaskDTO task, @WebParam(name = "session") Session session);
+    TaskDTO updateTask(@WebParam(name = "task") TaskDTO task);
 
     @WebMethod
-    boolean deleteTaskByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);
+    boolean deleteTaskByName(@WebParam(name = "name") String name);
 
     @WebMethod
-    TaskDTO getTaskByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);
+    TaskDTO getTaskByName(@WebParam(name = "name") String name);
 
 }

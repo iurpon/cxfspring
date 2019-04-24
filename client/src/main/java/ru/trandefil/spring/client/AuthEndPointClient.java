@@ -64,9 +64,9 @@ public class AuthEndPointClient {
         storeCookie((BindingProvider)authEndPoint);
         System.out.println(authEndPoint.logged().getName());*/
         UserEndPoint userEndPoint = getUserEndPoint();
-//        System.out.println("Logged ? " + userEndPoint.logout().isSuccess());
-        userEndPoint.getAllUsers().forEach(System.out::println);
 
+        userEndPoint.getAllUsers().forEach(System.out::println);
+        System.out.println("Logged ? " + userEndPoint.logout().isSuccess());
 //        System.out.println(authEndPoint.logged().getName());
 
     }
