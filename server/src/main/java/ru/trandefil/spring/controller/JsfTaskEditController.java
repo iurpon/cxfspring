@@ -2,7 +2,9 @@ package ru.trandefil.spring.controller;
 
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import org.springframework.web.jsf.FacesContextUtils;
+import ru.trandefil.spring.model.LoggedUser;
 import ru.trandefil.spring.model.Project;
 import ru.trandefil.spring.model.Task;
 import ru.trandefil.spring.model.User;
@@ -10,26 +12,28 @@ import ru.trandefil.spring.service.ProjectService;
 import ru.trandefil.spring.service.TaskService;
 import ru.trandefil.spring.service.UserService;
 
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.logging.Logger;
 
-@ViewScoped
 @ManagedBean
-public class JsfTaskEditController {
+@ApplicationScoped
+public class JsfTaskEditController  extends SpringBeanAutowiringSupport implements Serializable {
 
     @Autowired
-    private TaskService taskService;
+    private transient TaskService taskService;
 
     @Autowired
-    private ProjectService projectService;
+    private transient ProjectService projectService;
 
     @Autowired
-    private UserService userService;
+    private transient UserService userService;
 
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final transient Logger logger = Logger.getLogger(this.getClass().getName());
 
     private String id;
 
@@ -37,12 +41,13 @@ public class JsfTaskEditController {
 
     public void init() {
         logger.info("=============== jsfProjectEditController init");
-        FacesContextUtils
-                .getRequiredWebApplicationContext(FacesContext.getCurrentInstance())
-                .getAutowireCapableBeanFactory().autowireBean(this);
         if (id == null) {
-            final User assignee = userService.getByName("root");
-            task.setAssignee(assignee);
+            final LoggedUser loggedUser = LoggedUser.getLoggedUser();
+            if(loggedUser == null)
+                throw new RuntimeException("Not logged user");
+            final User logged = new User(loggedUser);
+            logger.info("==================== logged user : " + logged);
+            task.setAssignee(logged);
             return;
         }
         Task byId = taskService.getById(id);

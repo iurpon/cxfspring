@@ -16,7 +16,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Table(name = "users")
-public class User extends AbstractEntity implements Serializable{
+public class User extends AbstractEntity{
 
     @Column(unique = true)
     private String name;
@@ -36,6 +36,13 @@ public class User extends AbstractEntity implements Serializable{
         this.name = name;
         this.password = password;
         this.role = role;
+    }
+
+    public User(LoggedUser loggedUser) {
+        super(loggedUser.getId());
+        this.name = loggedUser.getUsername();
+        this.password = loggedUser.getPassword();
+        this.role = (Role)loggedUser.getAuthorities().stream().findAny().orElse(null);
     }
 
     @Override

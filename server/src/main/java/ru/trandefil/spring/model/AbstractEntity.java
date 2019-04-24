@@ -8,12 +8,13 @@ import ru.trandefil.spring.util.UUIDUtil;
 
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import java.io.Serializable;
 
 @Getter
 @Setter
 @MappedSuperclass
 @NoArgsConstructor
-public abstract class AbstractEntity {
+public abstract class AbstractEntity  implements Serializable {
 
     @Id
     protected String id = UUIDUtil.getUniqueString();

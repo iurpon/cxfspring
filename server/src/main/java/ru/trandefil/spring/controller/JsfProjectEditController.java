@@ -1,40 +1,48 @@
 package ru.trandefil.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import org.springframework.web.jsf.FacesContextUtils;
+import ru.trandefil.spring.model.LoggedUser;
 import ru.trandefil.spring.model.Project;
 import ru.trandefil.spring.model.User;
 import ru.trandefil.spring.service.ProjectService;
 import ru.trandefil.spring.service.UserService;
 
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import java.io.Serializable;
+import java.security.Principal;
 import java.util.logging.Logger;
 
-@ViewScoped
+
 @ManagedBean
-public class JsfProjectEditController {
+@ApplicationScoped
+public class JsfProjectEditController  extends SpringBeanAutowiringSupport implements Serializable {
 
     @Autowired
-    private ProjectService projectService;
+    private transient ProjectService projectService;
 
     @Autowired
-    private UserService userService;
+    private transient UserService userService;
 
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final transient Logger logger = Logger.getLogger(this.getClass().getName());
 
     private String id;
 
     private Project project = new Project();
 
     public void init() {
-        logger.info("=============== jsfProjectEditController init");
-        FacesContextUtils
-                .getRequiredWebApplicationContext(FacesContext.getCurrentInstance())
-                .getAutowireCapableBeanFactory().autowireBean(this);
+        logger.info("=============== jsfProjectEditController init with id = " + id);
         if (id == null) {
-            final User logged = userService.getByName("root");
+            final LoggedUser loggedUser = LoggedUser.getLoggedUser();
+            if(loggedUser == null)
+                throw new RuntimeException("Not logged user");
+            final User logged = new User(loggedUser);
+            logger.info("==================== logged user : " + logged);
             project.setUser(logged);
             return;
         }
